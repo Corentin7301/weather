@@ -1,7 +1,7 @@
 <template>
     <div class="relative px-5 py-3 rounded-2xl bg-grad-perso">
         <nuxt-img src="/images/cloud/22.png" sizes="sm:35vw "
-            class="absolute -right-4 bottom-1 icon-animation" />
+            class="absolute -right-4 bottom-1 fly-animation" />
         <div class="flex items-center justify-between ">
             <p class="text-2xl font-medium">Aujourd'hui</p>
             <p class="z-10 text-sm font-extralight first-letter:capitalize">{{dateNow.format('ddd DD MMMM')}}</p>
@@ -42,28 +42,5 @@
         background: linear-gradient(320deg, #202020 0%, #202020 30%, #6b6b6b9b 100%);
         backdrop-filter: blur(10px);
         border: 1px solid rgba(255, 255, 255, 0.25);
-    }
-
-    .icon-animation {
-        animation: bounce 8s infinite;
-    }
-
-
-    @keyframes bounce {
-
-        0%,
-        100% {
-            transform: translateY(-10%);
-        }
-
-        30% {
-            transform: translate(-2%,0);
-            animation-timing-function: cubic-bezier(0, 0.02, 0.69, 1.02);
-
-        }
-
-        50% {
-            transform: translate(3%,-2%);
-        }
     }
 </style>
