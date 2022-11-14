@@ -1,7 +1,7 @@
 <template>
-    <div class="relative px-5 py-3 rounded-2xl bg-grad-perso">
-        <nuxt-img src="/images/cloud/22.png" sizes="sm:35vw "
-            class="absolute -right-4 bottom-1 fly-animation" />
+    <section class="relative px-5 py-3 rounded-2xl bg-grad-perso">
+        <nuxt-img src="/images/cloud/22.png" sizes="sm:75vw"
+            class="absolute -right-4 bottom-1 fly-animation max-w-[140px]" />
         <div class="flex items-center justify-between ">
             <p class="text-2xl font-medium">Aujourd'hui</p>
             <p class="z-10 text-sm font-extralight first-letter:capitalize">{{dateNow.format('ddd DD MMMM')}}</p>
@@ -12,7 +12,7 @@
             <Icon name="majesticons:location-marker" size="24px" class="text-fuel-yellow-500" />
             <p class="font-light">{{addressParser}}</p>
         </div>
-    </div>
+    </section>
 </template>
 
 <script setup>
@@ -40,7 +40,6 @@
     .bg-grad-perso {
         background: -webkit-linear-gradient(304deg, #202020 0%, #6b6b6b9b 100%);
         background: linear-gradient(320deg, #202020 0%, #202020 30%, #6b6b6b9b 100%);
-        backdrop-filter: blur(10px);
         border: 1px solid rgba(255, 255, 255, 0.25);
     }
 </style>
