@@ -1,5 +1,5 @@
 <template>
     <div>
-        hello
+        Search location
     </div>
 </template>
