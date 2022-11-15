@@ -1,6 +1,6 @@
 <template>
     <section class="relative px-5 py-3 rounded-2xl bg-grad-perso">
-        <nuxt-img :src="`/images/${iconChoice.icon}.png`" sizes="sm:75vw"
+        <nuxt-img :src="`/images/${iconChoice.icon}.png`" :alt="props.biggerCardDayDatas.icon" sizes="sm:75vw"
             class="absolute -right-4 bottom-1 fly-animation max-w-[140px]" />
         <div class="flex items-center justify-between ">
 

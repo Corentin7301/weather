@@ -2,7 +2,7 @@
 
 - [x] change icon of BiggerCard + add weather icons in store
 - [ ] searchbar
-- [ ] network is disconnected error
+- [x] network is disconnected error
 - [ ] 7 days forecast
 - [ ] share function
 - [ ] add min/max temp

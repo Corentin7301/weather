@@ -1,7 +1,7 @@
 <template>
     <div class="px-3 py-3 rounded-2xl bg-mine-shaft-400 min-w-[170px]">
         <div class="flex items-end justify-between">
-            <nuxt-img :src="`/images/${iconChoice.icon}.png`" sizes="sm:75vw md:50vw lg:400px" loading="lazy"
+            <nuxt-img :src="`/images/${iconChoice.icon}.png`" :alt="props.hourData.icon" sizes="sm:75vw md:50vw lg:400px" loading="lazy"
                 class="max-w-[100px]" />
             <p class="mb-2 text-xl">{{hourData.datetime}}h</p>
         </div>
