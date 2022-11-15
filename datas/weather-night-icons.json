@@ -1,65 +1,65 @@
 [{
         "value": "snow",
-        "icon": "moon/19"
+        "icon": "moon/19_beahwi"
     },
     {
         "value": "snow-showers-day",
-        "icon": "moon/40"
+        "icon": "moon/40_q5vgvs"
     },
     {
         "value": "snow-showers-night",
-        "icon": "moon/40"
+        "icon": "moon/40_q5vgvs"
     },
     {
         "value": "thunder-rain",
-        "icon": "cloud/17"
+        "icon": "cloud/17_ax1f93"
     },
     {
         "value": "thunder-showers-day",
-        "icon": "moon/11"
+        "icon": "moon/11_jyoy6c"
     },
     {
         "value": "thunder-showers-night",
-        "icon": "moon/11"
+        "icon": "moon/11_jyoy6c"
     },
     {
         "value": "rain",
-        "icon": "cloud/7"
+        "icon": "cloud/7_ojvybl"
     },
     {
         "value": "showers-day",
-        "icon": "moon/1"
+        "icon": "moon/1_pxmqsh"
     },
     {
         "value": "showers-night",
-        "icon": "moon/1"
+        "icon": "moon/1_pxmqsh"
     },
     {
         "value": "fog",
-        "icon": "moon/2.2"
+        "icon": "moon/2.2_ovwuzg"
     },
     {
         "value": "wind",
-        "icon": "moon/10"
+        "icon": "moon/10_p0vhsa"
     },
     {
         "value": "cloudy",
-        "icon": "moon/15"
+        "icon": "moon/15_yarvoz"
     },
     {
         "value": "partly-cloudy-day",
-        "icon": "moon/31"
+        "icon": "moon/31_gw5bb9"
     },
     {
         "value": "partly-cloudy-night",
-        "icon": "moon/31"
+        "icon": "moon/31_gw5bb9"
     },
     {
         "value": "clear-day",
-        "icon": "moon/10"
+        "icon": "moon/10_p0vhsa"
     },
     {
         "value": "clear-night",
-        "icon": "moon/10"
+        "icon": "moon/10_p0vhsa"
     }
 ]

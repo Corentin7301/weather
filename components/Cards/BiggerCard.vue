@@ -1,6 +1,6 @@
 <template>
     <section class="relative px-5 py-3 rounded-2xl bg-grad-card-perso">
-        <nuxt-img :src="`/images/${iconChoice.icon}.png`" :alt="props.biggerCardDayDatas.icon" sizes="sm:75vw"
+        <nuxt-img :src="`/${iconChoice.icon}`" :alt="props.biggerCardDayDatas.icon" format="webp" provider="cloudinary" width="300"
             class="absolute -right-4 bottom-1 fly-animation max-w-[140px]" />
         <div class="flex items-start justify-between ">
             <p class="text-2xl font-medium">{{usePeriodChoiced().value.label}}</p>
