@@ -1,14 +1,15 @@
 <template>
     <section>
         <div class="relative flex gap-16 my-6 overflow-x-scroll scrollable period-choicer snap-x">
-            <Button :unelevated="periodChoiced.value !== period.value" v-for="(period,index) in periodChoice"
-                :key="index" roundedFull @click="periodChoiced = period" class="snap-start snap-mandatory">
+            <Button :unelevated="usePeriodChoiced().value.value !== period.value"
+                v-for="(period,index) in usePeriodItems().value" :key="index" roundedFull
+                @click="setPeriodChoice(period)" class="snap-start snap-mandatory">
                 <template #content>
                     {{period.label}}
                 </template>
             </Button>
         </div>
-        <div class="flex gap-3 overflow-x-scroll scrollable hours snap-x scroll-smooth" ref="hours">
+        <div class="flex gap-3 overflow-x-scroll scrollable hours snap-x scroll-smooth" ref="hoursContainer">
             <CardsSmallCard v-for="(hourData,index) in choicedPeriodHours" :key="index" :hourData="hourData"
                 :sunTimes="sunTimes" class="snap-start snap-mandatory" />
         </div>
@@ -24,7 +25,18 @@
             required: true
         },
     })
-    const emit = defineEmits(["period-choice"])
+    // format hour for display
+    const hoursFormater = (hours) => {
+        return hours.map(hour => {
+            hour.datetime = hour.datetime.slice(0, 2)
+            return hour
+        })
+    }
+    // get user's choiced period (dynamic)
+    const periodChoiced = usePeriodChoiced()
+    // get weather datas
+    const weatherFetchedDatas = useWeatherDatas()
+    
     const sunTimes = computed(() => {
         switch (periodChoiced.value.value) {
             case 'today':
@@ -42,44 +54,29 @@
                         return null
         }
     })
-    const periodChoiced = ref({
-        value: 'today',
-        label: 'Aujourd\'hui'
-    })
-    const periodChoice = [{
-            label: 'Aujourd\'hui',
-            value: 'today'
-        },
-        {
-            label: 'Demain',
-            value: 'tomorrow'
-        },
-        {
-            label: '7 prochains jours',
-            value: 'in-7-days'
-        },
-    ]
-    const hoursFormater = (hours) => {
-        return hours.map(hour => {
-            hour.datetime = hour.datetime.slice(0, 2)
-            return hour
-        })
-    }
+    
+    // choice start hours to display
     const choicedPeriodHours = computed(() => {
         if (periodChoiced.value.value === 'today') {
-            const todayHours = hoursFormater(props.weatherDatas.days[0].hours)
+            const todayHours = hoursFormater(weatherFetchedDatas.value.days[0].hours)
             return todayHours.filter(hour => hour.datetime >= dayjs().hour())
         } else if (periodChoiced.value.value === 'tomorrow') {
-            return hoursFormater(props.weatherDatas.days[1].hours)
+            return hoursFormater(weatherFetchedDatas.value.days[1].hours)
         } else if (periodChoiced.value.value === 'in-7-days') {
             return hours
+        } else {
+            console.log(periodChoiced.value.value);
         }
     })
-    watch(periodChoiced, () => {
-        emit('period-choice', periodChoiced.value)
-        hours.value.scrollLeft = 0
+    
+    // don't work
+    watch(periodChoiced.value, () => {
+        debugger
+        sunTimes
+        hoursContainer.value.scrollLeft = 0
     })
-    const hours = ref()
+    
+    const hoursContainer = ref()
 </script>
 
 <style scoped>

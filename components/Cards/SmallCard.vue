@@ -44,6 +44,9 @@
             required: true
         }
     })
+
+    const sunTimes = useSunTimes()
+
     const precipitation = computed(() => {
         const hourData = props.hourData
         if (hourData.preciptype) {
@@ -61,145 +64,9 @@
             }
         }
     })
-    const weatherIcons = [
-        {
-            value:'snow',
-            icon: 'cloud/23',
-        },
-        {
-            value:'snow-showers-day',
-            icon: 'cloud/18',
-        },
-        {
-            value:'snow-showers-night',
-            icon: 'moon/40',
-        },
-        {
-            value:'thunder-rain',
-            icon: 'cloud/17',
-        },
-        {
-            value:'thunder-showers-day',
-            icon: 'cloud/12',
-        },
-        {
-            value:'thunder-showers-night',
-            icon: 'cloud/11',
-        },
-        {
-            value:'rain',
-            icon: 'cloud/7',
-        },
-        {
-            value:'showers-day',
-            icon: 'sun/8',
-        },
-        {
-            value:'showers-night',
-            icon: 'moon/1',
-        },
-        {
-            value:'fog',
-            icon: 'sun/6',
-        },
-        {
-            value:'wind',
-            icon: 'sun/26',
-        },
-        {
-            value:'cloudy',
-            icon: 'cloud/35',
-        },
-        {
-            value:'partly-cloudy-day',
-            icon: 'sun/27',
-        },
-        {
-            value:'partly-cloudy-night',
-            icon: 'moon/31',
-        },
-        {
-            value:'clear-day',
-            icon: 'sun/26',
-        },
-        {
-            value:'clear-night',
-            icon: 'moon/10',
-        },
-    ]
-    const weatherNightIcons = [
-        {
-            value:'snow',
-            icon: 'moon/19',
-        },
-        {
-            value:'snow-showers-day',
-            icon: 'moon/40',
-        },
-        {
-            value:'snow-showers-night',
-            icon: 'moon/40',
-        },
-        {
-            value:'thunder-rain',
-            icon: 'cloud/17',
-        },
-        {
-            value:'thunder-showers-day',
-            icon: 'moon/11',
-        },
-        {
-            value:'thunder-showers-night',
-            icon: 'moon/11',
-        },
-        {
-            value:'rain',
-            icon: 'cloud/7',
-        },
-        {
-            value:'showers-day',
-            icon: 'moon/1',
-        },
-        {
-            value:'showers-night',
-            icon: 'moon/1',
-        },
-        {
-            value:'fog',
-            icon: 'moon/2.2',
-        },
-        {
-            value:'wind',
-            icon: 'moon/10',
-        },
-        {
-            value:'cloudy',
-            icon: 'moon/15',
-        },
-        {
-            value:'partly-cloudy-day',
-            icon: 'moon/31',
-        },
-        {
-            value:'partly-cloudy-night',
-            icon: 'moon/31',
-        },
-        {
-            value:'clear-day',
-            icon: 'moon/10',
-        },
-        {
-            value:'clear-night',
-            icon: 'moon/10',
-        },
-    ]
+    // choice of the icon to display
     const iconChoice = computed(() => {
         const hourData = props.hourData
-        const sunTimes = props.sunTimes
-        if(hourData.datetime < sunTimes.sunrise || hourData.datetime > sunTimes.sunset) {
-            return weatherNightIcons.find(icon => icon.value === hourData.icon)
-        } else {
-            return weatherIcons.find(icon => icon.value === hourData.icon)
-        }
+        return weatherIconChoice(hourData)
     })
 </script>
