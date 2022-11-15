@@ -1,14 +1,17 @@
 <template>
-        
-            <div class="flex items-center gap-5">
-                <input type="text" autocomplete="false" placeholder="Chambéry, Savoie" class="flex-1 px-5 py-2 text-lg font-light bg-transparent rounded-full bg-grad-card-perso" v-model="searchedLocation">
-                <button @click="fetchWeatherDatas()" class="p-3 ml-2 rounded-full bg-fuel-yellow-500"><Icon name="material-symbols:arrow-right-alt-rounded" size="32px" class="text-white" /></button>
-            </div>
+
+    <div class="flex items-center gap-5">
+        <input @keyup.enter="fetchWeatherDatas()" type="text" autocomplete="false" placeholder="Chambéry, Savoie"
+            class="flex-1 px-5 py-2 text-lg font-light bg-transparent rounded-full bg-grad-card-perso"
+            v-model="searchedLocation">
+        <button @click="fetchWeatherDatas()" class="p-3 ml-2 rounded-full bg-fuel-yellow-500">
+            <Icon name="material-symbols:arrow-right-alt-rounded" size="32px" class="text-white" /></button>
+    </div>
 </template>
 
 <script setup>
-import testDatas from '~/datas/test-datas.json'
-const searchedLocation = ref('')
+    import testDatas from '~/datas/test-datas.json'
+    const searchedLocation = ref('')
     const envVars = useRuntimeConfig()
     const dataAreFetched = ref(false)
     const weatherDatasPending = ref(false)
@@ -16,7 +19,8 @@ const searchedLocation = ref('')
     const fetchWeatherDatas = async () => {
         clearNuxtData('weatherDatas')
         const dateNow = useDateNow()
-        const apiCallUrl = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${searchedLocation.value}?iconSet=icons2&key=${envVars.weatherVisualCrossingApiKey}&unitGroup=metric&lang=fr`
+        const apiCallUrl =
+            `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${searchedLocation.value}?iconSet=icons2&key=${envVars.weatherVisualCrossingApiKey}&unitGroup=metric&lang=fr`
         if (envVars.environment === 'production') {
             const {
                 data
