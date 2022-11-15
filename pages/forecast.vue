@@ -1,8 +1,8 @@
 <template>
     <div>
         <div v-if="weatherDatas">
-            <CardsBiggerCard :dateNow="dateNow.value" :biggerCardDayDatas="biggerCardDatas" :periodChoiced="periodChoiced" />
-            <PeriodChoicer :weatherDatas="weatherDatas" />
+            <CardsBiggerCard :biggerCardDayDatas="biggerCardDatas" />
+            <PeriodChoicer />
         </div>
         <ErrorsError v-else error="no-datas" />
     </div>

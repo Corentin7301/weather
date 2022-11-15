@@ -2,11 +2,19 @@
 
 - [x] change icon of BiggerCard + add weather icons in store
 - [ ] searchbar
+- [ ] add env variables with api key
+- [ ] add env variables with production or development
 - [x] network is disconnected error
-- [ ] 7 days forecast
+- [x] 7 days forecast
 - [ ] share function
 - [x] add min/max temp
+- [ ] bring the slider to 0
 - [ ] footer
+- [ ] favoris --> localstorage
+- [ ] change name of app
+- [ ] turn to pwa
+- [ ] 3rd day
+- [ ] 15 days
 
 
 

@@ -19,12 +19,6 @@
 <script setup>
     import dayjs from "dayjs"
 
-    const props = defineProps({
-        weatherDatas: {
-            type: Object,
-            required: true
-        },
-    })
     // format hour for display
     const hoursFormater = (hours) => {
         return hours.map(hour => {
@@ -36,25 +30,7 @@
     const periodChoiced = usePeriodChoiced()
     // get weather datas
     const weatherFetchedDatas = useWeatherDatas()
-    
-    const sunTimes = computed(() => {
-        switch (periodChoiced.value.value) {
-            case 'today':
-                return {
-                    sunrise: props.weatherDatas.days[0].sunrise.slice(0, 2), sunset: props.weatherDatas.days[0]
-                        .sunset.slice(0, 2)
-                }
-                case 'tomorrow':
-                    return {
-                        sunrise: props.weatherDatas.days[1].sunrise.slice(0, 2), sunset: props.weatherDatas
-                            .days[1]
-                            .sunset.slice(0, 2)
-                    }
-                    default:
-                        return null
-        }
-    })
-    
+
     // choice start hours to display
     const choicedPeriodHours = computed(() => {
         if (periodChoiced.value.value === 'today') {
@@ -63,19 +39,22 @@
         } else if (periodChoiced.value.value === 'tomorrow') {
             return hoursFormater(weatherFetchedDatas.value.days[1].hours)
         } else if (periodChoiced.value.value === 'in-7-days') {
-            return hours
+            const in7Days = []
+            for (let i = 0; i < 7; i++) {
+                in7Days.push(weatherFetchedDatas.value.days[i])
+            }
+            return in7Days
         } else {
             console.log(periodChoiced.value.value);
         }
     })
-    
+
     // don't work
     watch(periodChoiced.value, () => {
         debugger
-        sunTimes
         hoursContainer.value.scrollLeft = 0
     })
-    
+
     const hoursContainer = ref()
 </script>
 

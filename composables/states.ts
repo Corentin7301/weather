@@ -24,12 +24,14 @@ export const usePeriodItems = () => useState < Object > ('periodItems', () => ([
     {
         label: '7 prochains jours',
         value: 'in-7-days',
-        index: 0
+        index: 2
     },
 ]))
 
 // user's choiced period getter
 export const usePeriodChoiced = () => useState < Object > ('periodChoiced', () => ({}));
+// data's display type
+export const useDisplayType = () => useState < Object > ('displayType', () => "hourly");
 
 // user's choiced period setter
 export const setPeriodChoice = (period: Object) => {
@@ -37,24 +39,27 @@ export const setPeriodChoice = (period: Object) => {
         case 'today':
             usePeriodChoiced().value = usePeriodItems().value[0]
             setSunTimes(period.index)
+            useDisplayType().value = "hourly"
             useDateNow().value = dayjs().locale('fr')
             break;
         case 'tomorrow':
             usePeriodChoiced().value = usePeriodItems().value[1]
             setSunTimes(period.index)
+            useDisplayType().value = "hourly"
             useDateNow().value = dayjs().locale('fr').add(1, 'day')
             break;
         case 'in-7-days':
             usePeriodChoiced().value = usePeriodItems().value[2]
-            setSunTimes(period.index)
-            useDateNow().value = dayjs().locale('fr')
+            useDisplayType().value = "daily"
             break;
         default:
             usePeriodChoiced().value = usePeriodItems().value[0]
+            useDisplayType().value = "hourly"
             setSunTimes(0)
             break;
     }
 }
+
 
 // sun times getter
 export const useSunTimes = () => useState < Object > ('sunTimes', () => ({}));
@@ -85,7 +90,7 @@ export const setSunTimes = (periodIndex: Number) => {
 import weatherIcons from '~/datas/weather-icons.json'
 import weatherNightIcons from '~/datas/weather-night-icons.json'
 export const weatherIconChoice = (hourData: Object) => {
-    if(hourData.datetime < useSunTimes().value.sunrise || hourData.datetime > useSunTimes().value.sunset) {
+    if (hourData.datetime < useSunTimes().value.sunrise || hourData.datetime > useSunTimes().value.sunset) {
         return weatherNightIcons.find((icon: Object) => icon.value === hourData.icon)
     } else {
         return weatherIcons.find((icon: Object) => icon.value === hourData.icon)
