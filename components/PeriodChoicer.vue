@@ -8,9 +8,9 @@
                 </template>
             </Button>
         </div>
-        <div class="flex gap-3 overflow-x-scroll scrollable hours snap-x">
-            <CardsSmallCard v-for="(hourData,index) in choicedPeriodHours" :key="index" :hourData="hourData" :sunTimes="sunTimes"
-                class="snap-start snap-mandatory" />
+        <div class="flex gap-3 overflow-x-scroll scrollable hours snap-x scroll-smooth" ref="hours">
+            <CardsSmallCard v-for="(hourData,index) in choicedPeriodHours" :key="index" :hourData="hourData"
+                :sunTimes="sunTimes" class="snap-start snap-mandatory" />
         </div>
     </section>
 </template>
@@ -24,6 +24,7 @@
             required: true
         },
     })
+    const emit = defineEmits(["period-choice"])
     const sunTimes = computed(() => {
         switch (periodChoiced.value.value) {
             case 'today':
@@ -33,11 +34,12 @@
                 }
                 case 'tomorrow':
                     return {
-                        sunrise: props.weatherDatas.days[1].sunrise.slice(0, 2), sunset: props.weatherDatas.days[1]
-                        .sunset.slice(0, 2)
+                        sunrise: props.weatherDatas.days[1].sunrise.slice(0, 2), sunset: props.weatherDatas
+                            .days[1]
+                            .sunset.slice(0, 2)
                     }
-                default:
-                    return null
+                    default:
+                        return null
         }
     })
     const periodChoiced = ref({
@@ -73,6 +75,11 @@
             return hours
         }
     })
+    watch(periodChoiced, () => {
+        emit('period-choice', periodChoiced.value)
+        hours.value.scrollLeft = 0
+    })
+    const hours = ref()
 </script>
 
 <style scoped>
