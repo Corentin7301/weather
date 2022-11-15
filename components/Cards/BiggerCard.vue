@@ -1,12 +1,13 @@
 <template>
     <section class="relative px-5 py-3 rounded-2xl bg-grad-perso">
-        <nuxt-img src="/images/cloud/22.png" sizes="sm:75vw"
+        <nuxt-img :src="`/images/${iconChoice.icon}.png`" sizes="sm:75vw"
             class="absolute -right-4 bottom-1 fly-animation max-w-[140px]" />
         <div class="flex items-center justify-between ">
-            <p class="text-2xl font-medium">{{periodChoiced.label}}</p>
-            <p class="z-10 text-sm font-extralight first-letter:capitalize">{{dateNow.format('ddd DD MMMM')}}</p>
+
+            <p class="text-2xl font-medium">{{usePeriodChoiced().value.label}}</p>
+            <p class="z-10 text-sm font-extralight first-letter:capitalize">{{dayjs(dateNow).locale('fr').format('ddd DD MMMM')}}</p>
         </div>
-        <p class="flex my-3 ml-5 font-bold text-7xl">{{Math.round(weatherDayDatas.temp)}}
+        <p class="flex my-3 ml-5 font-bold text-7xl">{{Math.round(biggerCardDayDatas.temp)}}
             <span class="ml-1 text-2xl font-medium text-fuel-yellow-500">°C</span></p>
         <div class="flex gap-2 ">
             <Icon name="majesticons:location-marker" size="24px" class="text-fuel-yellow-500" />
@@ -16,25 +17,30 @@
 </template>
 
 <script setup>
+import dayjs from 'dayjs'
+import 'dayjs/locale/fr'
+
     const props = defineProps({
-        weatherDayDatas: {
+        biggerCardDayDatas: {
             type: Object,
             required: true
         },
-        dateNow: {
-            type: Object,
-            required: true
-        },
-        periodChoiced: {
-            type: Object,
-            required: true
-        }
     })
 
+    const dateNow = useDateNow()
+    
+    const periodChoiced = usePeriodChoiced()
+
     const addressParser = computed(() => {
-        const address = props.weatherDayDatas.resolvedAddress
+        const address = props.biggerCardDayDatas.resolvedAddress
         const addressArray = address.split(',')
         return `${addressArray[0]}, ${addressArray[2]}`
+    })
+
+    const iconChoice = computed(() => {
+        return weatherIconChoice(
+            props.biggerCardDayDatas,
+        )
     })
 </script>
 

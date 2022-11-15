@@ -1,8 +1,12 @@
 # TODO: 
 
+- [x] change icon of BiggerCard + add weather icons in store
 - [ ] searchbar
-- [ ] change icon of BiggerCard + add weather icons in store
-
+- [ ] network is disconnected error
+- [ ] 7 days forecast
+- [ ] share function
+- [ ] add min/max temp
+- [ ] footer
 
 
 

@@ -1,9 +1,9 @@
 <template>
     <div>
         <Header />
-        <div v-if="datas">
-            <CardsBiggerCard :dateNow="dateNow" :weatherDayDatas="biggerCardDatas" :periodChoiced="periodChoiced" />
-            <PeriodChoicer :weatherDatas="datas" @period-choice="periodChoice" />
+        <div v-if="weatherDatas">
+            <CardsBiggerCard :dateNow="dateNow.value" :biggerCardDayDatas="biggerCardDatas" :periodChoiced="periodChoiced" />
+            <PeriodChoicer :weatherDatas="weatherDatas" />
         </div>
         <div v-else class="flex items-center justify-between opacity-80">
             <p>Malheureusement, nous avons eu du mal à récupérer les données...<span
@@ -17,53 +17,19 @@
 <script setup>
     import dayjs from 'dayjs'
     import 'dayjs/locale/fr'
+    // TODO:replace datas with datas from api
     import datas from '~/datas/test-datas.json'
-    const dateNow = ref(dayjs().locale('fr'))
-    const periodChoiced = ref({
-        label: 'Aujourd\'hui',
-        value: 'today',
-        index: 0
-    })
-
-    const periodChoice = (value) => {
-        switch(value.value) {
-            case 'today':
-                periodChoiced.value = {
-                    label: 'Aujourd\'hui',
-                    value: 'today',
-                    index: 0
-                }
-                break;
-                case 'tomorrow':
-                periodChoiced.value = {
-                    label: 'Demain',
-                    value: 'tomorrow',
-                    index: 1
-                }
-                dateNow.value = dayjs().locale('fr').add(1,'day')
-                break;
-                case 'in-7-days':
-                periodChoiced.value = {
-                    label: 'Dans 7 jours',
-                    value: 'in-7-days',
-                    index: 0
-                }
-                break;
-                default:
-                periodChoiced.value = {
-                    label: 'Aujourd\'hui',
-                    value: 'today',
-                    index: 0
-                }
-                break;
-        }
-    }
+    setWeatherDatas(datas)
+    setPeriodChoice(usePeriodChoiced().value)
+    const dateNow = useDateNow()
+    const periodChoiced = usePeriodChoiced()
+    const weatherDatas = useWeatherDatas()
     
     const biggerCardDatas = computed(() => {
         return {
-            resolvedAddress: datas.resolvedAddress,
-            temp: datas.days[periodChoiced.value.index].temp,
-            icon: datas.days[periodChoiced.value.index].icon,
+            resolvedAddress: weatherDatas.value.resolvedAddress,
+            temp: weatherDatas.value.days[periodChoiced.value.index].temp,
+            icon: weatherDatas.value.days[periodChoiced.value.index].icon,
         }
     })
 </script>
