@@ -2,7 +2,7 @@
     <div class="px-3 py-3 rounded-2xl bg-mine-shaft-400 min-w-[170px]">
         <div v-if="useDisplayType().value === 'hourly'">
             <div class="flex items-end justify-between">
-                <nuxt-img :src="`~/assets/images/${iconChoice.icon}.png`" :alt="props.hourData.icon"
+                <nuxt-img :src="`/images/${iconChoice.icon}.png`" :alt="props.hourData.icon"
                     sizes="sm:75vw md:50vw lg:400px" loading="lazy" class="max-w-[100px]" />
                 <p class="mb-2 text-xl">{{hourData.datetime}}h</p>
             </div>
@@ -40,7 +40,7 @@
                     class="text-xs font-normal tracking-[0.5em] block">{{dayjs(hourData.datetime).locale('fr').format('MMMM')}}</span>
             </p>
 
-            <nuxt-img :src="`~/assets/images/${iconChoice.icon}.png`" :alt="props.hourData.icon"
+            <nuxt-img :src="`/images/${iconChoice.icon}.png`" :alt="props.hourData.icon"
                 sizes="sm:75vw md:50vw lg:400px" loading="lazy" class="max-h-[100px] mx-auto" />
             <div :class="[`flex  w-full ${precipitation? 'flex-col justify-between' : 'flex-row justify-around'}`]">
                 <p class="flex justify-center my-3 text-5xl font-bold">{{Math.round(hourData.temp)}}<span

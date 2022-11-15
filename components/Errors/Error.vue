@@ -2,7 +2,7 @@
     <div class="flex items-center justify-between opacity-80">
         <p>{{errors[error].label}}<span
                 class="block mt-3 text-lg font-medium text-fuel-yellow-500">{{errors[error].subLabel}}</span></p>
-        <nuxt-img :src="`~/assets/images/${errors[error].icon}.png`" sizes="sm:75vw md:50vw lg:400px " alt="error" loading="lazy"
+        <nuxt-img :src="`/images/${errors[error].icon}.png`" sizes="sm:75vw md:50vw lg:400px " alt="error" loading="lazy"
             class="fly-animation max-w-[35vw]" />
     </div>
 </template>
