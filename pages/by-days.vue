@@ -23,6 +23,8 @@
         return {
             resolvedAddress: weatherDatas.value.resolvedAddress,
             temp: weatherDatas.value.days[periodChoiced.value.index].temp,
+            minTemp: weatherDatas.value.days[periodChoiced.value.index].tempmin,
+            maxTemp: weatherDatas.value.days[periodChoiced.value.index].tempmax,
             icon: weatherDatas.value.days[periodChoiced.value.index].icon,
         }
     })
