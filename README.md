@@ -1,6 +1,7 @@
 # TODO: 
-[ ]: searchbar
-[ ]: change icon of BiggerCard + add weather icons in store
+
+- [ ] searchbar
+- [ ] change icon of BiggerCard + add weather icons in store
 
 
 
