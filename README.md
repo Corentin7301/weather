@@ -5,7 +5,7 @@
 - [x] network is disconnected error
 - [ ] 7 days forecast
 - [ ] share function
-- [ ] add min/max temp
+- [x] add min/max temp
 - [ ] footer
 
 
