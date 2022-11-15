@@ -15,6 +15,7 @@
 - [ ] turn to pwa
 - [ ] 3rd day
 - [ ] 15 days
+- [ ] change BiggerCard when in7days
 
 
 

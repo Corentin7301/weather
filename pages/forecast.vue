@@ -1,31 +1,34 @@
 <template>
     <div>
-        <div v-if="weatherDatas">
+        <Header />
+        <div v-if="useWeatherDatas().value">
             <CardsBiggerCard :biggerCardDayDatas="biggerCardDatas" />
             <PeriodChoicer />
+        </div>
+        <div v-else-if="weatherDatasPending">
+            <nuxt-img :src="`/images/sun/26.png`" alt="waiting" sizes="sm:30vw" class="mx-auto mt-10 animate-spin" />
         </div>
         <ErrorsError v-else error="no-datas" />
     </div>
 </template>
 
 <script setup>
-    import dayjs from 'dayjs'
-    import 'dayjs/locale/fr'
-    // TODO:replace datas with datas from api
-    import datas from '~/datas/test-datas.json'
-    setWeatherDatas(datas)
-    setPeriodChoice(usePeriodChoiced().value)
-    const dateNow = useDateNow()
-    const periodChoiced = usePeriodChoiced()
-    const weatherDatas = useWeatherDatas()
-    
+
+onMounted(() => {
+    if(!useWeatherDatas().value) {
+        navigateTo('/')
+    }
+})
+
     const biggerCardDatas = computed(() => {
-        return {
-            resolvedAddress: weatherDatas.value.resolvedAddress,
-            temp: weatherDatas.value.days[periodChoiced.value.index].temp,
-            minTemp: weatherDatas.value.days[periodChoiced.value.index].tempmin,
-            maxTemp: weatherDatas.value.days[periodChoiced.value.index].tempmax,
-            icon: weatherDatas.value.days[periodChoiced.value.index].icon,
+        if(useWeatherDatas().value && usePeriodChoiced().value) {
+            return {
+                resolvedAddress: useWeatherDatas().value.resolvedAddress,
+                temp: useWeatherDatas().value.days[usePeriodChoiced().value.index].temp,
+                minTemp: useWeatherDatas().value.days[usePeriodChoiced().value.index].tempmin,
+                maxTemp: useWeatherDatas().value.days[usePeriodChoiced().value.index].tempmax,
+                icon: useWeatherDatas().value.days[usePeriodChoiced().value.index].icon,
+            }
         }
     })
 </script>

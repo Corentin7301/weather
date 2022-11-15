@@ -1,5 +1,6 @@
 <template>
-    <div>
-        Search location
+    <div class="mt-3 ">
+        <HomeIcons />
+        <HomeSearchbarContainer />
     </div>
 </template>

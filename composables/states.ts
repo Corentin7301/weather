@@ -8,7 +8,7 @@ export const setWeatherDatas = (weatherFetchedDatas: Object) => (
     useWeatherDatas().value = weatherFetchedDatas
 );
 // weather datas getter
-export const useWeatherDatas = () => useState < Object > ('weatherFetchedDatas', () => ({}));
+export const useWeatherDatas = () => useState < Object > ('weatherFetchedDatas', () => (null));
 
 // period items of the user can choose
 export const usePeriodItems = () => useState < Object > ('periodItems', () => ([{

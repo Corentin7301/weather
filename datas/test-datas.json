@@ -541,7 +541,7 @@
 		}, {
 			"datetime": "19:00:00",
 			"datetimeEpoch": 1668535200,
-			"temp": 11.3,
+			"temp": 13.3,
 			"feelslike": 11.3,
 			"humidity": 82.9,
 			"dew": 8.5,

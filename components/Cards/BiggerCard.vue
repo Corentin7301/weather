@@ -1,5 +1,5 @@
 <template>
-    <section class="relative px-5 py-3 rounded-2xl bg-grad-perso">
+    <section class="relative px-5 py-3 rounded-2xl bg-grad-card-perso">
         <nuxt-img :src="`/images/${iconChoice.icon}.png`" :alt="props.biggerCardDayDatas.icon" sizes="sm:75vw"
             class="absolute -right-4 bottom-1 fly-animation max-w-[140px]" />
         <div class="flex items-start justify-between ">
@@ -55,11 +55,3 @@ import 'dayjs/locale/fr'
         )
     })
 </script>
-
-<style scoped>
-    .bg-grad-perso {
-        background: -webkit-linear-gradient(304deg, #202020 0%, #6b6b6b9b 100%);
-        background: linear-gradient(320deg, #202020 0%, #202020 30%, #6b6b6b9b 100%);
-        border: 1px solid rgba(255, 255, 255, 0.25);
-    }
-</style>
