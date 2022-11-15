@@ -12,7 +12,9 @@ const searchedLocation = ref('')
     const envVars = useRuntimeConfig()
     const dataAreFetched = ref(false)
     const weatherDatasPending = ref(false)
+
     const fetchWeatherDatas = async () => {
+        clearNuxtData('weatherDatas')
         const dateNow = useDateNow()
         const apiCallUrl = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${searchedLocation.value}?iconSet=icons2&key=${envVars.weatherVisualCrossingApiKey}&unitGroup=metric&lang=fr`
         if (envVars.environment === 'production') {

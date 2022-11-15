@@ -1,15 +1,16 @@
 # TODO: 
 
 - [x] change icon of BiggerCard + add weather icons in store
-- [ ] searchbar
-- [ ] add env variables with api key
-- [ ] add env variables with production or development
+- [x] searchbar
+- [x] add env variables with api key
+- [x] add env variables with production or development
 - [x] network is disconnected error
 - [x] 7 days forecast
 - [ ] share function
 - [x] add min/max temp
 - [ ] bring the slider to 0
 - [ ] footer
+- [x] return button on forecast page (to go back to the searchbar)
 - [ ] favoris --> localstorage
 - [ ] change name of app
 - [ ] turn to pwa

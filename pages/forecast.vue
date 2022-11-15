@@ -13,7 +13,6 @@
 </template>
 
 <script setup>
-
 onMounted(() => {
     if(!useWeatherDatas().value) {
         navigateTo('/')
