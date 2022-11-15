@@ -1,0 +1,22 @@
+.fly-animation {
+    animation: fly 8s infinite;
+}
+
+
+@keyframes fly {
+
+    0%,
+    100% {
+        transform: translateY(-10%);
+    }
+
+    30% {
+        transform: translate(-2%, 0);
+        animation-timing-function: cubic-bezier(0, 0.02, 0.69, 1.02);
+
+    }
+
+    50% {
+        transform: translate(3%, -2%);
+    }
+}

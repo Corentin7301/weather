@@ -1,0 +1,5 @@
+.bg-grad-card-perso {
+    background: -webkit-linear-gradient(304deg, #202020 0%, #6b6b6b9b 100%);
+    background: linear-gradient(320deg, #202020 0%, #202020 30%, #6b6b6b9b 100%);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+}

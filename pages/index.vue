@@ -1,5 +1,6 @@
 <template>
-    <div>
-        hello
+    <div class="mt-3 ">
+        <HomeIcons />
+        <HomeSearchbarContainer />
     </div>
 </template>

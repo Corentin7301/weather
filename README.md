@@ -1,3 +1,26 @@
+# TODO: 
+
+- [x] change icon of BiggerCard + add weather icons in store
+- [x] searchbar
+- [x] add env variables with api key
+- [x] add env variables with production or development
+- [x] network is disconnected error
+- [x] 7 days forecast
+- [ ] share function
+- [x] add min/max temp
+- [ ] bring the slider to 0
+- [ ] footer
+- [x] return button on forecast page (to go back to the searchbar)
+- [ ] favoris --> localstorage
+- [ ] change name of app
+- [ ] turn to pwa
+- [ ] 3rd day
+- [ ] 15 days
+- [ ] change BiggerCard when in7days
+
+
+
+
 # Nuxt 3 Minimal Starter
 
 Look at the [nuxt 3 documentation](https://v3.nuxtjs.org) to learn more.
