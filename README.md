@@ -11,6 +11,7 @@
 - [x] fix images in production
 - [ ] bring the slider to 0
 - [ ] footer
+- [ ] add transitions between pages
 - [x] return button on forecast page (to go back to the searchbar)
 - [ ] favoris --> localstorage
 - [ ] change name of app
