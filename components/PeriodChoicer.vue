@@ -1,6 +1,6 @@
 <template>
     <section>
-        <div class="relative flex gap-16 my-6 overflow-x-scroll scrollable period-choicer snap-x">
+        <div @click="periodButtonIsClicked = !periodButtonIsClicked" class="relative flex gap-16 my-6 overflow-x-scroll scrollable period-choicer snap-x">
             <Button :unelevated="usePeriodChoiced().value.value !== period.value"
                 v-for="(period,index) in usePeriodItems().value" :key="index" roundedFull
                 @click="setPeriodChoice(period)" class="snap-start snap-mandatory">
@@ -28,9 +28,11 @@
     }
     // get user's choiced period (dynamic)
     const periodChoiced = usePeriodChoiced()
+    
     // get weather datas
     const weatherFetchedDatas = useWeatherDatas()
 
+    const hoursContainer = ref()
     // choice start hours to display
     const choicedPeriodHours = computed(() => {
         if (periodChoiced.value.value === 'today') {
@@ -47,15 +49,16 @@
         } else {
             console.log(periodChoiced.value.value);
         }
-    })
-
-    // don't work
-    watch(periodChoiced.value, () => {
-        debugger
         hoursContainer.value.scrollLeft = 0
     })
 
-    const hoursContainer = ref()
+    // bring the slider to 0 when period is changed
+    const periodButtonIsClicked = ref(false)
+    watch(periodButtonIsClicked, () => {
+        hoursContainer.value.scrollLeft = 0
+    })
+
+
 </script>
 
 <style scoped>

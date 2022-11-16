@@ -11,8 +11,8 @@
 - [x] fix images in production
 - [x] return button on forecast page (to go back to the searchbar)
 - [x] turn to pwa
-- [ ] update to Nuxt 3 v1
-- [ ] bring the slider to 0
+- [x] bring the slider to 0
+- [ ] bigger temp value of small cards
 - [ ] change BiggerCard when in7days
 - [ ] last research --> localstorage
 - [ ] footer + credits + inspiration + github link + contact + mention legales
@@ -20,6 +20,7 @@
 - [ ] change name of app
 - [ ] 3rd day
 - [ ] 15 days
+- [ ] responsive
 
 
 
