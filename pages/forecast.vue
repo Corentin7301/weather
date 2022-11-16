@@ -18,7 +18,6 @@ onMounted(() => {
         navigateTo('/')
     }
 })
-
     const biggerCardDatas = computed(() => {
         if(useWeatherDatas().value && usePeriodChoiced().value) {
             return {
