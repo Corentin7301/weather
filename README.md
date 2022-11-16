@@ -12,7 +12,7 @@
 - [x] return button on forecast page (to go back to the searchbar)
 - [x] turn to pwa
 - [x] bring the slider to 0
-- [ ] bigger temp value of small cards
+- [x] bigger temp value of small cards
 - [ ] change BiggerCard when in7days
 - [ ] last research --> localstorage
 - [ ] footer + credits + inspiration + github link + contact + mention legales

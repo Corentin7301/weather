@@ -4,7 +4,7 @@
             <div class="flex items-end justify-between">
                 <nuxt-img :src="`/${iconChoice.icon}`" :alt="props.hourData.icon"
                 format="webp" provider="cloudinary" width="300" loading="lazy" class="max-w-[100px]" />
-                <p class="mb-2 text-xl">{{hourData.datetime}}h</p>
+                <p class="mb-2 text-2xl">{{hourData.datetime}}h</p>
             </div>
             <div class="flex justify-between mt-3">
                 <div v-if="precipitation">
