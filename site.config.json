@@ -2,6 +2,7 @@
     "siteUrl": "https://weather.corentinperroux.fr",
     "siteName": "Weather App",
     "siteMetaDescription": "L'application de météo la plus simple du monde",
+    "author": "Corentin Perroux",
     "twitterUrl": "https://twitter.com/CorentinPerroux",
     "twitterAccount": "@CorentinPerroux",
     "siteType": "website"

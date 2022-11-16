@@ -91,7 +91,7 @@ export default defineNuxtConfig({
           rel: 'icon',
           type: 'image/x-icon',
           // CHANGE FAVICON NAME HERE
-          href: '/logo.png'
+          href: '/icon.png'
         },
         {
           hid: "canonical",
@@ -101,7 +101,7 @@ export default defineNuxtConfig({
       ]
     },
   },
-  modules: ['@nuxtjs/tailwindcss', 'nuxt-icon', '@nuxt/image-edge'],
+  modules: ['@nuxtjs/tailwindcss', 'nuxt-icon', '@nuxt/image-edge','@kevinmarrec/nuxt-pwa'],
   css: ['@/assets/css/tailwind.css', '@/assets/css/fonts.css', '@/assets/css/animations.css',
     '@/assets/css/gradients.css'
   ],
@@ -113,5 +113,31 @@ export default defineNuxtConfig({
     cloudinary: {
       baseURL: 'https://res.cloudinary.com/corentin7301/image/upload/weather_app'
     }
-  }
+  },
+  pwa: {
+    meta: {
+      name: global.siteName,
+      author: global.author,
+      description: global.description,
+      lang: 'fr',
+      mobileAppIOS: true,
+      ogHost: global.siteUrl,
+      twitterCard: 'summary',
+      twitterSite: global.twitterAccount,
+      twitterCreator: global.twitterAccount,
+      theme_color: '#272727',
+    },
+    manifest: {
+      name: global.siteName,
+      short_name: global.siteName,
+      description: global.description,
+      lang: 'fr',
+      theme_color: "#272727",
+      background_color: "#272727",
+      // start_url: "/?utm_source=pwa"
+    },
+    // workbox: {
+    //   enabled: true
+    // },
+  },
 })
