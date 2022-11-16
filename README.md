@@ -9,16 +9,18 @@
 - [ ] share function
 - [x] add min/max temp
 - [x] fix images in production
-- [ ] bring the slider to 0
-- [ ] footer
-- [ ] add transitions between pages
 - [x] return button on forecast page (to go back to the searchbar)
-- [ ] favoris --> localstorage
+- [x] turn to pwa
+- [x] bring the slider to 0
+- [x] bigger temp value of small cards
+- [ ] change BiggerCard when in7days
+- [ ] last research --> localstorage
+- [ ] footer + credits + inspiration + github link + contact + mention legales
+- [ ] add transitions between pages
 - [ ] change name of app
-- [ ] turn to pwa
 - [ ] 3rd day
 - [ ] 15 days
-- [ ] change BiggerCard when in7days
+- [ ] responsive
 
 
 
