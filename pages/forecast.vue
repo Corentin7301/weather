@@ -20,14 +20,36 @@ onMounted(() => {
         navigateTo('/')
     }
 })
+
+    const periodChoiced = usePeriodChoiced()
+    watch(periodChoiced, (newPeriodChoiced) => {
+        biggerCardDatas
+    })
+
     const biggerCardDatas = computed(() => {
-        if(useWeatherDatas().value && usePeriodChoiced().value) {
-            return {
-                resolvedAddress: useWeatherDatas().value.resolvedAddress,
-                temp: useWeatherDatas().value.days[usePeriodChoiced().value.index].temp,
-                minTemp: useWeatherDatas().value.days[usePeriodChoiced().value.index].tempmin,
-                maxTemp: useWeatherDatas().value.days[usePeriodChoiced().value.index].tempmax,
-                icon: useWeatherDatas().value.days[usePeriodChoiced().value.index].icon,
+        if (useWeatherDatas().value && periodChoiced.value) {
+            if (usePeriodChoiced().value.value === 'in-7-days') {
+                const in7Days = []
+                for (let i = 0; i < 7; i++) {
+                    in7Days.push(useWeatherDatas().value.days[i])
+                }
+                return {
+                    days: [...in7Days],
+                    resolvedAddress: useWeatherDatas().value.resolvedAddress,
+                    temp: useWeatherDatas().value.days[usePeriodChoiced().value.index].temp,
+                    tempmin: useWeatherDatas().value.days[usePeriodChoiced().value.index].tempmin,
+                    tempmax: useWeatherDatas().value.days[usePeriodChoiced().value.index].tempmax,
+                    icon: useWeatherDatas().value.days[usePeriodChoiced().value.index].icon,
+                }
+            } else {
+                return {
+                    resolvedAddress: useWeatherDatas().value.resolvedAddress,
+                    datetime: useWeatherDatas().value.days[usePeriodChoiced().value.index].datetime,
+                    temp: useWeatherDatas().value.days[usePeriodChoiced().value.index].temp,
+                    tempmin: useWeatherDatas().value.days[usePeriodChoiced().value.index].tempmin,
+                    tempmax: useWeatherDatas().value.days[usePeriodChoiced().value.index].tempmax,
+                    icon: useWeatherDatas().value.days[usePeriodChoiced().value.index].icon,
+                }
             }
         }
     })

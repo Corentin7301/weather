@@ -96,3 +96,24 @@ export const weatherIconChoice = (hourData: Object) => {
         return weatherIcons.find((icon: Object) => icon.value === hourData.icon)
     }
 }
+
+
+export const useIndexDayChoiced = () => useState < Number > ('indexDayChoiced', () => (0));
+
+export const calcMoonPercent = (moonphase: Number) => {
+    let result = null
+    if (moonphase === 0 || moonphase === 1) {
+        result = 0;
+        return result;
+    } else if (moonphase === 0.5) {
+        result = 100;
+        return result;
+    } else if (moonphase < 0.5) {
+        result = moonphase * 100 * 2;
+        console.log(0.49 * 100 * 2)
+        return result;
+    } else if (moonphase > 0.5) {
+        result = moonphase * 100 * 2;
+        return 200 - result;
+    }
+}

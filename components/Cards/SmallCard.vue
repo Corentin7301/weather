@@ -1,5 +1,6 @@
 <template>
-    <div class="px-3 py-3 rounded-2xl bg-mine-shaft-400 min-w-[170px]">
+    <div :class="[`px-3 py-3 rounded-2xl bg-mine-shaft-400 min-w-[170px] transition-colors border ${useDisplayType().value === 'daily' && useIndexDayChoiced().value === index ? 'border-fuel-yellow-500':'border-transparent'}  `]">
+        <!-- hourly -->
         <div v-if="useDisplayType().value === 'hourly'">
             <div class="flex items-end justify-between">
                 <img :src="`${global.imagesLink}/${iconChoice.icon}`" :alt="props.hourData.icon"
@@ -32,8 +33,8 @@
                         class="text-lg font-medium text-fuel-yellow-500">°C</span></p>
             </div>
         </div>
-        <div v-else-if="useDisplayType().value === 'daily'" class="flex flex-col items-center">
-
+        <!-- daily -->
+        <div v-else-if="useDisplayType().value === 'daily'" @click="useIndexDayChoiced().value = props.index" class="flex flex-col items-center ">
             <p class="mb-3 text-xl font-semibold text-center capitalize ">
                 {{dayjs(hourData.datetime).locale('fr').format('ddd DD')}}<br />
                 <span
@@ -91,6 +92,10 @@ import global from '~/site.config.json'
     const props = defineProps({
         hourData: {
             type: Object,
+            required: true
+        },
+        index: {
+            type: Number,
             required: true
         },
     })
