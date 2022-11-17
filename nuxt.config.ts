@@ -105,9 +105,11 @@ export default defineNuxtConfig({
   css: ['@/assets/css/tailwind.css', '@/assets/css/fonts.css', '@/assets/css/animations.css',
     '@/assets/css/gradients.css'
   ],
-  publicRuntimeConfig: {
-    environment: process.env.APP_ENV,
-    weatherVisualCrossingApiKey: process.env.WEATHER_VISUAL_CROSSING_API_KEY
+  runtimeConfig: {
+    public: {
+      weatherVisualCrossingApiKey: process.env.WEATHER_VISUAL_CROSSING_API_KEY,
+      environment: process.env.APP_ENV  || 'development',
+    }
   },
   pwa: {
     meta: {
