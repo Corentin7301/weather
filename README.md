@@ -23,7 +23,7 @@
 - [ ] 3rd day
 - [ ] 15 days
 - [ ] responsive
-- [ ] share weather functionality
+- [ ] share weather functionality 
 
 
 
