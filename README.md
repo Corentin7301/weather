@@ -22,6 +22,7 @@
 - [ ] 15 days
 - [ ] responsive
 - [ ] location button
+- [ ] add X button to delete searchbar
 
 
 
