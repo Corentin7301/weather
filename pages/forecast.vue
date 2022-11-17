@@ -6,13 +6,15 @@
             <PeriodChoicer />
         </div>
         <div v-else-if="weatherDatasPending">
-            <nuxt-img :src="`/sun/26_rwr8lf`" alt="waiting" format="webp" provider="cloudinary" width="300" class="mx-auto mt-10 animate-spin" />
+            <img :src="`${global.imagesLink}/sun/26_rwr8lf`" alt="waiting" format="webp" provider="cloudinary" width="300" class="mx-auto mt-10 animate-spin" />
         </div>
         <ErrorsError v-else error="no-datas" />
     </div>
 </template>
 
 <script setup>
+import global from '~/site.config.json'
+
 onMounted(() => {
     if(!useWeatherDatas().value) {
         navigateTo('/')
