@@ -11,14 +11,6 @@
             <div class="flex items-end my-3 ml-5">
                 <p class="flex font-bold text-7xl">{{Math.round(biggerCardDatas.temp)}}
                     <span class="ml-1 text-2xl font-medium text-fuel-yellow-500">°C</span>
-                </p>
-                <div class="flex flex-col items-center mb-[0.35rem] ml-1 font-thin divide-y">
-                    <p>
-                        <span class="">{{Math.round(biggerCardDatas.tempmin)}}</span>
-                        <span class=" ml-[2px] text-[12px] font-medium text-fuel-yellow-500">°</span>
-                    </p>
-                    <p>
-                        <span class="self-end ">{{Math.round(biggerCardDatas.tempmax)}}</span>
                         <span class=" ml-[2px] text-[12px] font-medium text-fuel-yellow-500">°</span>
                     </p>
                 </div>
