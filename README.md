@@ -6,22 +6,24 @@
 - [x] add env variables with production or development
 - [x] network is disconnected error
 - [x] 7 days forecast
-- [ ] share function
 - [x] add min/max temp
 - [x] fix images in production
 - [x] return button on forecast page (to go back to the searchbar)
 - [x] turn to pwa
 - [x] bring the slider to 0
 - [x] bigger temp value of small cards
-- [ ] change BiggerCard when in7days
-- [ ] last research --> localstorage
+- [x] change BiggerCard when in7days
+- [x] last research --> localstorage
+- [ ] send new research when user click on history card
+- [ ] add X button to delete searchbar
+- [ ] location button
 - [ ] footer + credits + inspiration + github link + contact + mention legales
 - [ ] add transitions between pages
 - [ ] change name of app
 - [ ] 3rd day
 - [ ] 15 days
 - [ ] responsive
-- [ ] location button
+- [ ] share weather functionality
 
 
 

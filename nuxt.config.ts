@@ -103,7 +103,7 @@ export default defineNuxtConfig({
   },
   modules: ['@nuxtjs/tailwindcss', 'nuxt-icon','@kevinmarrec/nuxt-pwa'],
   css: ['@/assets/css/tailwind.css', '@/assets/css/fonts.css', '@/assets/css/animations.css',
-    '@/assets/css/gradients.css'
+    '@/assets/css/gradients.css', '@/assets/css/utils.css'
   ],
   runtimeConfig: {
     public: {
