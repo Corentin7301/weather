@@ -29,8 +29,6 @@
             </div>
         </div>
         <div v-else-if="useDisplayType().value === 'daily'">
-            <!--<img :src="`${global.imagesLink}/${iconChoice.icon}`" :alt="props.biggerCardDayDatas.icon"
-                class="absolute -right-4 bottom-1 fly-animation max-w-[140px]" />-->
             <p class="text-2xl font-medium text-center capitalize">
                 {{dayjs(useDateNow().value).locale('fr').format('dddd DD MMMM')}}</p>
             <div class="flex items-center justify-between mx-5 my-3">
