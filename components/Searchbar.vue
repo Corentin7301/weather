@@ -12,9 +12,10 @@
 <script setup>
     import testDatas from '~/datas/test-datas.json'
     const searchedLocation = ref('')
-    const envVars = useRuntimeConfig()
+    const envVars = useRuntimeConfig().public
     const dataAreFetched = ref(false)
     const weatherDatasPending = ref(false)
+    
 
     const fetchWeatherDatas = async () => {
         clearNuxtData('weatherDatas')
