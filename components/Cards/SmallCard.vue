@@ -2,7 +2,7 @@
     <div class="px-3 py-3 rounded-2xl bg-mine-shaft-400 min-w-[170px]">
         <div v-if="useDisplayType().value === 'hourly'">
             <div class="flex items-end justify-between">
-                <nuxt-img :src="`/${iconChoice.icon}`" :alt="props.hourData.icon"
+                <img :src="`${global.imagesLink}/${iconChoice.icon}`" :alt="props.hourData.icon"
                 format="webp" provider="cloudinary" width="300" loading="lazy" class="max-w-[100px]" />
                 <p class="mb-2 text-2xl">{{hourData.datetime}}h</p>
             </div>
@@ -40,7 +40,7 @@
                     class="text-xs font-normal tracking-[0.5em] block">{{dayjs(hourData.datetime).locale('fr').format('MMMM')}}</span>
             </p>
 
-            <nuxt-img :src="`/${iconChoice.icon}`" :alt="props.hourData.icon"
+            <img :src="`${global.imagesLink}/${iconChoice.icon}`" :alt="props.hourData.icon"
             format="webp" provider="cloudinary" height="300" loading="lazy" class="max-h-[100px] mx-auto" />
             <div :class="[`flex  w-full ${precipitation? 'flex-col justify-between' : 'flex-row justify-around'}`]">
                 <p class="flex justify-center my-3 text-5xl font-bold">{{Math.round(hourData.temp)}}<span
@@ -84,6 +84,7 @@
 </template>
 
 <script setup>
+import global from '~/site.config.json'
     import dayjs from 'dayjs'
     import 'dayjs/locale/fr'
 
