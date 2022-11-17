@@ -45,18 +45,19 @@ import 'dayjs/locale/fr'
     
     const indexDayChoiced = useIndexDayChoiced()
     watch(indexDayChoiced, (newIndexDayChoiced) => {
-        biggerCardDatas.value = dayChoicedInfos(indexDayChoiced.value)
-        useDateNow().value = dayjs(biggerCardDatas.value.datetime).locale('fr').format('ddd DD MMMM')
+        biggerCardDatas.value = typeDayChoicedInfos(indexDayChoiced.value)
+        console.log(useDateNow().value);
+        useDateNow().value = biggerCardDatas.value.datetime
         iconChoice
     })
     watch(periodChoiced, (newPeriodChoiced) => {
         useIndexDayChoiced().value = 0
-        biggerCardDatas.value = dayChoicedInfos(indexDayChoiced.value)
-        useDateNow().value = dayjs(biggerCardDatas.value.datetime).locale('fr').format('ddd DD MMMM')
+        biggerCardDatas.value = typeDayChoicedInfos(indexDayChoiced.value)
+        useDateNow().value = biggerCardDatas.value.datetime
         iconChoice
     })
 
-    const dayChoicedInfos = (indexDayChoiced) => {
+    const typeDayChoicedInfos = (indexDayChoiced) => {
         if(useDisplayType().value === 'daily') {
             return {
                 ...props.biggerCardDayDatas.days[indexDayChoiced],

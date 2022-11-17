@@ -44,6 +44,7 @@ onMounted(() => {
             } else {
                 return {
                     resolvedAddress: useWeatherDatas().value.resolvedAddress,
+                    datetime: useWeatherDatas().value.days[usePeriodChoiced().value.index].datetime,
                     temp: useWeatherDatas().value.days[usePeriodChoiced().value.index].temp,
                     tempmin: useWeatherDatas().value.days[usePeriodChoiced().value.index].tempmin,
                     tempmax: useWeatherDatas().value.days[usePeriodChoiced().value.index].tempmax,
