@@ -11,6 +11,7 @@
 <script setup>
 import global from '~/site.config.json'
     const returnToSearchbar = () => {
+        setPeriodChoice('today')
         setWeatherDatas(null)
         return navigateTo('/')
     }

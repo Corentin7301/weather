@@ -10,7 +10,7 @@
             </Button>
         </div>
         <div class="flex gap-3 overflow-x-scroll scrollable hours snap-x scroll-smooth" ref="hoursContainer">
-            <CardsSmallCard v-for="(hourData,index) in choicedPeriodHours" :key="index" :hourData="hourData"
+            <CardsSmallCard v-for="(hourData,index) in choicedPeriodHours" :key="index" :hourData="hourData" :index="index"
                 :sunTimes="sunTimes" class="snap-start snap-mandatory" />
         </div>
     </section>

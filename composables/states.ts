@@ -96,3 +96,6 @@ export const weatherIconChoice = (hourData: Object) => {
         return weatherIcons.find((icon: Object) => icon.value === hourData.icon)
     }
 }
+
+
+export const useIndexDayChoiced = () => useState < Number > ('indexDayChoiced', () => (0));

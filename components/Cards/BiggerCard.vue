@@ -3,19 +3,19 @@
         <img :src="`${global.imagesLink}/${iconChoice.icon}`" :alt="props.biggerCardDayDatas.icon" class="absolute -right-4 bottom-1 fly-animation max-w-[140px]" />
         <div class="flex items-start justify-between ">
             <p class="text-2xl font-medium">{{usePeriodChoiced().value.label}}</p>
-            <p class="z-10 text-sm font-extralight first-letter:capitalize">{{dayjs(dateNow).locale('fr').format('ddd DD MMMM')}}</p>
+            <p class="z-10 text-sm font-extralight first-letter:capitalize">{{dayjs(useDateNow().value).locale('fr').format('ddd DD MMMM')}}</p>
         </div>
         <div class="flex items-end my-3 ml-5">
-            <p class="flex font-bold text-7xl">{{Math.round(biggerCardDayDatas.temp)}}
+            <p class="flex font-bold text-7xl">{{Math.round(biggerCardDatas.temp)}}
                 <span class="ml-1 text-2xl font-medium text-fuel-yellow-500">°C</span>
             </p>
             <div class="flex flex-col items-center mb-[0.35rem] ml-1 font-thin divide-y">
                 <p>
-                    <span class="">{{Math.round(biggerCardDayDatas.minTemp)}}</span>
+                    <span class="">{{Math.round(biggerCardDatas.tempmin)}}</span>
                     <span class=" ml-[2px] text-[12px] font-medium text-fuel-yellow-500">°</span>
                 </p>
                 <p>
-                    <span class="self-end ">{{Math.round(biggerCardDayDatas.maxTemp)}}</span>
+                    <span class="self-end ">{{Math.round(biggerCardDatas.tempmax)}}</span>
                     <span class=" ml-[2px] text-[12px] font-medium text-fuel-yellow-500">°</span>
                 </p>
             </div>
@@ -38,10 +38,36 @@ import 'dayjs/locale/fr'
             required: true
         },
     })
-
-    const dateNow = useDateNow()
     
+    const biggerCardDatas = ref(props.biggerCardDayDatas)
     const periodChoiced = usePeriodChoiced()
+    
+    
+    const indexDayChoiced = useIndexDayChoiced()
+    watch(indexDayChoiced, (newIndexDayChoiced) => {
+        biggerCardDatas.value = dayChoicedInfos(indexDayChoiced.value)
+        useDateNow().value = dayjs(biggerCardDatas.value.datetime).locale('fr').format('ddd DD MMMM')
+        iconChoice
+    })
+    watch(periodChoiced, (newPeriodChoiced) => {
+        useIndexDayChoiced().value = 0
+        biggerCardDatas.value = dayChoicedInfos(indexDayChoiced.value)
+        useDateNow().value = dayjs(biggerCardDatas.value.datetime).locale('fr').format('ddd DD MMMM')
+        iconChoice
+    })
+
+    const dayChoicedInfos = (indexDayChoiced) => {
+        if(useDisplayType().value === 'daily') {
+            return {
+                ...props.biggerCardDayDatas.days[indexDayChoiced],
+            }
+        } else {
+            return {
+                ...props.biggerCardDayDatas,
+            }
+        }
+    }
+
 
     const addressParser = computed(() => {
         const address = props.biggerCardDayDatas.resolvedAddress
