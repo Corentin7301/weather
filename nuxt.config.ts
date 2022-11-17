@@ -101,17 +101,14 @@ export default defineNuxtConfig({
       ]
     },
   },
-  modules: ['@nuxtjs/tailwindcss', 'nuxt-icon', '@nuxt/image-edge','@kevinmarrec/nuxt-pwa'],
+  modules: ['@nuxtjs/tailwindcss', 'nuxt-icon','@kevinmarrec/nuxt-pwa'],
   css: ['@/assets/css/tailwind.css', '@/assets/css/fonts.css', '@/assets/css/animations.css',
     '@/assets/css/gradients.css'
   ],
-  publicRuntimeConfig: {
-    environment: process.env.APP_ENV,
-    weatherVisualCrossingApiKey: process.env.WEATHER_VISUAL_CROSSING_API_KEY
-  },
-  image: {
-    cloudinary: {
-      baseURL: 'https://res.cloudinary.com/corentin7301/image/upload/weather_app'
+  runtimeConfig: {
+    public: {
+      weatherVisualCrossingApiKey: process.env.WEATHER_VISUAL_CROSSING_API_KEY,
+      environment: process.env.APP_ENV  || 'development',
     }
   },
   pwa: {
