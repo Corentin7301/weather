@@ -10,6 +10,7 @@
                 width="300" class="mx-auto mt-10 animate-spin" />
         </div>
         <ErrorsError v-else error="no-datas" />
+        <NuxtLink to="/informations" class="absolute text-sm text-gray-400 -translate-x-1/2 bottom-3 left-1/2">Informations</NuxtLink>
     </div>
 </template>
 

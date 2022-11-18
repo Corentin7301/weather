@@ -14,3 +14,19 @@
     .no-tap-highlighting {
         -webkit-tap-highlight-color: transparent
     }
+
+    .content-style h1 {
+        @apply text-2xl font-bold text-gray-50;
+    }
+    .content-style h2 {
+        @apply mt-5 mb-1 text-xl font-bold text-fuel-yellow-500;
+    }
+    .content-style p {
+        @apply mb-3 text-gray-50;
+    }
+    .content-style a {
+        @apply text-yellow-500;
+    }
+    .content-style strong {
+        @apply font-bold text-yellow-500;
+    }
