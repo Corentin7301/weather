@@ -19,7 +19,7 @@
 - [x] location button
 - [x] change name of app
 - [x] add best quality icon for pwa
-- [ ] add install pwa button
+- [x] add install pwa button
 - [ ] footer + credits + inspiration + github link + contact + mention legales
 - [ ] add transitions between pages
 - [ ] 3rd day
