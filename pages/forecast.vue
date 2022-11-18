@@ -17,6 +17,10 @@
 <script setup>
     import global from '~/site.config.json'
 
+    definePageMeta({
+  layout: "scrollable",
+});
+
     onMounted(() => {
         if (!useWeatherDatas().value) {
             navigateTo('/')
