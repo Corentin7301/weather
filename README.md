@@ -20,7 +20,7 @@
 - [x] change name of app
 - [x] add best quality icon for pwa
 - [x] add install pwa button
-- [ ] add transitions between pages
+- [x] add transitions between pages
 - [ ] footer + credits + inspiration + github link + contact + mention legales
 - [ ] responsive
 - [ ] add analytics
