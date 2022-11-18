@@ -1,11 +1,11 @@
 
 # Bonjour,
 
-Tout d'abord, bienvenue sur Météo soleil ? !
+Tout d'abord, bienvenue sur "Météo soleil ?" !
 
 Moi c'est [Corentin](https://portfolio.corentinperroux.fr) et je suis le créateur de ce site.
 
-## C'est quoi Météo soleil ? ?
+## C'est quoi "Météo soleil ?" ?
 
 Tout simplement une jolie application web qui te permet de consulter les prévisions météo du lieu de ton choix.
 
@@ -32,4 +32,4 @@ Le [pack d'illustrations](https://www.behance.net/gallery/119405857/3D-Weather-I
 
 Pour terminer, j'ai utilisé l'Api de Visual Crossing Weather pour récupérer les données météo et l'Api de Big Data Cloud pour récupérer la ville correspondante aux coordonnés gps.
 
-## Merci d'utiliser Météo soleil ? !
+## Merci d'utiliser "Météo soleil ?" !
