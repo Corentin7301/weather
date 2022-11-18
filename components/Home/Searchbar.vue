@@ -1,16 +1,15 @@
 <template>
-
     <div class="flex items-center gap-5">
         <div class="relative">
             <input @keyup.enter="fetchWeatherDatas()" type="text" autocomplete="false" placeholder="Chambéry, Savoie"
-                class="w-full px-5 py-2 pr-12 text-lg font-light bg-transparent rounded-full bg-grad-card-perso"
+                :class="[`w-full px-5 py-2 pr-12 text-lg font-light bg-transparent rounded-full bg-grad-card-perso ${!useDeferredPrompt().value ? 'select-none':''}`]"
                 v-model="searchedLocation" aria-describedby="searchbar">
             <div v-if="searchedLocation" @click="searchedLocation = ''"
                 class="absolute inset-y-0 right-0 flex items-center pr-3 ">
                 <Icon v-if="searchedLocation" name="material-symbols:close-rounded" size="20px" class="text-gray-500" />
             </div>
         </div>
-        <button @click="fetchWeatherDatas()" class="p-3 ml-2 rounded-full bg-fuel-yellow-500"
+        <button @click="fetchWeatherDatas()" :class="[`p-3 ml-2 rounded-full bg-fuel-yellow-500 ${!useDeferredPrompt().value ? 'no-tap-highlighting' : ''}`]"
         aria-describedby="search button">
         <span @click="!searchedLocation ? gpsQueryLocation = true : gpsQueryLocation = false"
                 class="w-full h-full ">

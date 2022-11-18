@@ -90,7 +90,7 @@ export const setSunTimes = (periodIndex: Number) => {
 import weatherIcons from '~/datas/weather-icons.json'
 import weatherNightIcons from '~/datas/weather-night-icons.json'
 export const weatherIconChoice = (hourData: Object) => {
-    if (hourData.datetime < useSunTimes().value.sunrise || hourData.datetime > useSunTimes().value.sunset && useDisplayType().value !== "daily") {
+    if (hourData.datetime < useSunTimes().value.sunrise || hourData.datetime > useSunTimes().value.sunset && usePeriodChoiced().value.value === 'in7days') {
         return weatherNightIcons.find((icon: Object) => icon.value === hourData.icon)
     } else {
         return weatherIcons.find((icon: Object) => icon.value === hourData.icon)
@@ -121,3 +121,5 @@ export const calcMoonPercent = (moonphase: Number) => {
 
 // history location choiced by user
 export const useChoicedHistoryLocation = () => useState < Number > ('choicedHistoryLocation', () => (null));
+
+export const useDeferredPrompt = () => useState < Object > ('deferredPrompt', () => (null));

@@ -1,5 +1,5 @@
 <template>
-    <button class="absolute -top-4 -right-3 animate-bounce" aria-describedby="application install button" v-if="deferredPrompt" @click="clickCallback()">
+    <button :class="[`absolute -top-4 -right-3 animate-bounce ${!useDeferredPrompt().value ? 'no-tap-highlighting' : ''}`]" aria-describedby="application install button" v-if="deferredPrompt" @click="clickCallback()">
         <div class="p-3 ml-2 rounded-full bg-fuel-yellow-500">
             <Icon name="ic:baseline-install-mobile" size="24px" class="text-white" />
         </div>
@@ -10,10 +10,6 @@
 <script setup>
 onMounted(() => {
     captureEvent()
-    // window.addEventListener('beforeinstallprompt', (e) => {
-    //     e.preventDefault()
-    //     deferredPrompt = e
-    // })
 })
 
 const deferredPrompt = ref(null)
@@ -22,6 +18,7 @@ const deferredPrompt = ref(null)
       e.preventDefault()
       // Stash the event so it can be triggered later.
       deferredPrompt.value = e
+      useDeferredPrompt().value = e
     })
   }
   const clickCallback = () => {
@@ -33,6 +30,7 @@ const deferredPrompt = ref(null)
         // Call another function?
       }
       deferredPrompt.value = null
+      useDeferredPrompt().value = null
     })
   }
 </script>

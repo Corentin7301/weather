@@ -7,10 +7,10 @@
                     <span class="absolute w-10 h-1 rounded-full -bottom-1 -right-3 bg-fuel-yellow-500"></span>
                 </p>
                 <div class="grid grid-cols-2 gap-5">
-                    <div v-for="historyItem in historyItems" :key="historyItem.id" class="p-4 text-center border border-yellow-500 rounded-xl" @click="useChoicedHistoryLocation().value = historyItem">
+                    <button v-for="historyItem in historyItems" :key="historyItem.id" :class="[`p-4 text-center border border-yellow-500 rounded-xl ${!useDeferredPrompt().value ? 'no-tap-highlighting' : ''}`]" @click="useChoicedHistoryLocation().value = historyItem">
                         <p v-if="addressParser(historyItem)[0]" :class="[` ${addressParser(historyItem)[0].length > 8 ? 'text-base' : 'text-xl'} font-semibold`]">{{ addressParser(historyItem)[0] }}</p>
                         <p v-if="addressParser(historyItem)[1]" :class="[` ${addressParser(historyItem)[2].length > 8 ? 'text-sm' : 'text-base'} font-thin tracking-[0.3em]`]">{{ addressParser(historyItem)[2] }}</p>
-                    </div>
+                    </button>
                 </div>
             </section>
             <div class="h-3 spacer"></div>

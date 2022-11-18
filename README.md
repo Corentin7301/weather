@@ -20,11 +20,12 @@
 - [x] change name of app
 - [x] add best quality icon for pwa
 - [x] add install pwa button
-- [ ] footer + credits + inspiration + github link + contact + mention legales
 - [ ] add transitions between pages
+- [ ] footer + credits + inspiration + github link + contact + mention legales
+- [ ] responsive
+- [ ] add analytics
 - [ ] 3rd day
 - [ ] 15 days
-- [ ] responsive
 - [ ] share weather functionality 
 
 

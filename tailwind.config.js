@@ -33,6 +33,16 @@ module.exports = {
         Karla: ['Karla', 'sans-serif'],
       },
     },
-    plugins: [],
+    plugins: [
+      plugin(function({ addUtilities }){
+        const newUtilities = {
+                '.no-tap-highlighting': {
+                'webkit-tap-highlight-color': 'rgba(0,0,0,0)'
+            }
+        }
+
+        addUtilities( newUtilities );
+    })
+    ],
   }
 }
