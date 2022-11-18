@@ -9,6 +9,7 @@
                     <span class="absolute w-10 h-1 rounded-full -bottom-1 -right-3 bg-fuel-yellow-500"></span>
 
                 </p>
+                <HomeInstallButton />
                 <HomeSearchbar />
             </section>
             <HomeHistory v-if="getHistory" :historyItems="getHistory"/>

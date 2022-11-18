@@ -1,12 +1,7 @@
 <template>
-    <button class=" button-container text-ecstasy-500" v-if="deferredPrompt" @click="clickCallback()">
-        <div class="label-container">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
-            </svg>
-            <span>Installer l'application</span>
+    <button class="absolute -top-4 -right-3 animate-bounce" aria-describedby="application install button" v-if="deferredPrompt" @click="clickCallback()">
+        <div class="p-3 ml-2 rounded-full bg-fuel-yellow-500">
+            <Icon name="ic:baseline-install-mobile" size="24px" class="text-white" />
         </div>
         <div class="w-2 h-2 mr-2 rounded-full bg-ecstasy-500 animate-ping"></div>
     </button>
