@@ -21,7 +21,7 @@
 - [x] add best quality icon for pwa
 - [x] add install pwa button
 - [x] add transitions between pages
-- [ ] footer + credits + inspiration + github link + contact + mention legales
+- [x] footer + credits + inspiration + github link + contact + mention legales
 - [ ] responsive
 - [ ] add analytics
 - [ ] 3rd day

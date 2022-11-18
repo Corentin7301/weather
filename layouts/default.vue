@@ -10,18 +10,6 @@
 <script setup>
 import { useOnline } from '@vueuse/core'
 const online = useOnline()
-// onMounted(() => {
-//     captureEvent()
-// })
-// const deferredPrompt = ref(null)
-//   const captureEvent = () => {
-//     window.addEventListener('beforeinstallprompt', (e) => {
-//       e.preventDefault()
-//       console.log(e);
-//       // Stash the event so it can be triggered later.
-//       deferredPrompt.value = e
-//     })
-//   }
 </script>
 
 <style scoped>
