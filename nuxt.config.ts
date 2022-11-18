@@ -47,7 +47,7 @@ export default defineNuxtConfig({
         {
           hid: "og:image",
           property: "og:image",
-          content: "/logo.png",
+          content: "/icon.png",
         },
         {
           property: "og:image:width",
@@ -81,7 +81,7 @@ export default defineNuxtConfig({
         {
           hid: "twitter:image",
           name: "twitter:image",
-          content: "/logo.png",
+          content: "/icon.png",
         },
 
       ],
