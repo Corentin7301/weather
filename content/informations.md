@@ -1,7 +1,7 @@
 
 # Bonjour,
 
-Tout d'abord, bienvenue sur "Météo soleil ?" !
+Tout d'abord, bienvenue sur "Météo soleil ?" (Mais t'es au soleil ?) !
 
 Moi c'est [Corentin](https://portfolio.corentinperroux.fr) et je suis le créateur de ce site.
 
@@ -16,7 +16,7 @@ Voici mon adresse mail : [corentin7301@gmail.com](mailto:corentin7301@gmail.com)
 
 N'hésite pas si tu as une question, une remarque ou une suggestion.
 
-Si tu veux soutenir le projet, tu peux me "payer un café". Ca permettra de maintenir l'application en ligne et de continuer à l'améliorer.
+Si tu veux soutenir le projet, tu peux me "payer un café". Ça permettra de maintenir l'application en ligne et de continuer à l'améliorer.
 
 <a href="https://www.buymeacoffee.com/corentin7301" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important; " ></a>
 
