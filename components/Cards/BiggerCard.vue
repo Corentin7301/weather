@@ -121,7 +121,14 @@
     const addressParser = computed(() => {
         const address = props.biggerCardDayDatas.resolvedAddress
         const addressArray = address.split(',')
-        return `${addressArray[0]}, ${addressArray[2]}`
+        if (addressArray.length >= 3) {
+            return `${addressArray[0]}, ${addressArray[2]}`
+        } else if(addressArray.length >= 2) {
+            return `${addressArray[0]}, ${addressArray[1]}`
+        }
+        else {
+            return `${addressArray[0]}`
+        }
     })
 
     const iconChoice = computed(() => {

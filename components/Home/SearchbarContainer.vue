@@ -6,7 +6,7 @@
                 <h2 class="mb-8 text-xl font-light">Ne laisse pas le mauvais temps stopper tes activités</h2>
                 <p class="relative inline-block mb-6 text-3xl ">
                     Recherche ta ville
-                    <span class="absolute w-10 h-1 -bottom-1 -right-3 bg-fuel-yellow-500"></span>
+                    <span class="absolute w-10 h-1 rounded-full -bottom-1 -right-3 bg-fuel-yellow-500"></span>
 
                 </p>
                 <HomeSearchbar />
