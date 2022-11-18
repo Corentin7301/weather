@@ -90,16 +90,17 @@ export const setSunTimes = (periodIndex: Number) => {
 import weatherIcons from '~/datas/weather-icons.json'
 import weatherNightIcons from '~/datas/weather-night-icons.json'
 export const weatherIconChoice = (hourData: Object) => {
-    if (hourData.datetime < useSunTimes().value.sunrise || hourData.datetime > useSunTimes().value.sunset) {
+    if (hourData.datetime < useSunTimes().value.sunrise || hourData.datetime > useSunTimes().value.sunset && useDisplayType().value !== "daily") {
         return weatherNightIcons.find((icon: Object) => icon.value === hourData.icon)
     } else {
         return weatherIcons.find((icon: Object) => icon.value === hourData.icon)
     }
 }
 
-
+// for daily view, it's a day is choiced
 export const useIndexDayChoiced = () => useState < Number > ('indexDayChoiced', () => (0));
 
+// calcul of moon percent from moon phase
 export const calcMoonPercent = (moonphase: Number) => {
     let result = null
     if (moonphase === 0 || moonphase === 1) {
@@ -118,4 +119,5 @@ export const calcMoonPercent = (moonphase: Number) => {
     }
 }
 
+// history location choiced by user
 export const useChoicedHistoryLocation = () => useState < Number > ('choicedHistoryLocation', () => (null));
