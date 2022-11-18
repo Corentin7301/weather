@@ -13,6 +13,7 @@ import global from '~/site.config.json'
     const returnToSearchbar = () => {
         setPeriodChoice('today')
         setWeatherDatas(null)
+        useChoicedHistoryLocation().value = null
         return navigateTo('/')
     }
 </script>

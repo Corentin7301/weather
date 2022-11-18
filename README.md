@@ -14,7 +14,7 @@
 - [x] bigger temp value of small cards
 - [x] change BiggerCard when in7days
 - [x] last research --> localstorage
-- [ ] send new research when user click on history card
+- [x] send new research when user click on history card
 - [ ] add X button to delete searchbar
 - [ ] location button
 - [ ] footer + credits + inspiration + github link + contact + mention legales

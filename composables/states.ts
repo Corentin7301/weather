@@ -117,3 +117,5 @@ export const calcMoonPercent = (moonphase: Number) => {
         return 200 - result;
     }
 }
+
+export const useChoicedHistoryLocation = () => useState < Number > ('choicedHistoryLocation', () => (null));

@@ -69,6 +69,9 @@
                 }
                 const newHistoryArray = [newLocation, ...historyArray]
                 localStorage.setItem('locationHistory', JSON.stringify(newHistoryArray))
+            } else {
+                const newHistoryArray = historyArray.filter((item) => item !== newLocation)
+                localStorage.setItem('locationHistory', JSON.stringify([newLocation, ...newHistoryArray]))
             }
         } else {
             const newLocation = [useWeatherDatas().value.resolvedAddress]
