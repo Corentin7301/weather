@@ -10,3 +10,7 @@
         scrollbar-width: none;
         /* Firefox */
     }
+
+    .no-tap-highlighting {
+        -webkit-tap-highlight-color: transparent
+    }
