@@ -1,6 +1,6 @@
 <template>
     <div class="relative max-h-screen min-h-screen overflow-hidden text-gray-50 bg-grad-perso font-Karla">
-        <div class="max-w-[90%] mx-auto py-4">
+        <div :class="[`max-w-[90%] mx-auto py-4 ${!useDeferredPrompt().value ? 'select-none':''}`]">
             <slot v-if="online" />
             <ErrorsError v-else error="no-connexion" />
         </div>
@@ -10,6 +10,18 @@
 <script setup>
 import { useOnline } from '@vueuse/core'
 const online = useOnline()
+// onMounted(() => {
+//     captureEvent()
+// })
+// const deferredPrompt = ref(null)
+//   const captureEvent = () => {
+//     window.addEventListener('beforeinstallprompt', (e) => {
+//       e.preventDefault()
+//       console.log(e);
+//       // Stash the event so it can be triggered later.
+//       deferredPrompt.value = e
+//     })
+//   }
 </script>
 
 <style scoped>
