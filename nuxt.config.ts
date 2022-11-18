@@ -102,7 +102,7 @@ export default defineNuxtConfig({
     },
     pageTransition: { name: 'page', mode: 'out-in' },
   },
-  modules: ['@nuxtjs/tailwindcss', 'nuxt-icon','@kevinmarrec/nuxt-pwa'],
+  modules: ['@nuxtjs/tailwindcss', 'nuxt-icon','@kevinmarrec/nuxt-pwa','@nuxt/content'],
   css: ['@/assets/css/tailwind.css', '@/assets/css/fonts.css', '@/assets/css/animations.css',
     '@/assets/css/gradients.css', '@/assets/css/utils.css'
   ],
