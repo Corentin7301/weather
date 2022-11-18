@@ -16,7 +16,7 @@
 - [x] last research --> localstorage
 - [x] send new research when user click on history card
 - [x] add X button to delete searchbar
-- [ ] location button
+- [x] location button
 - [ ] add install pwa button
 - [ ] footer + credits + inspiration + github link + contact + mention legales
 - [ ] add transitions between pages
