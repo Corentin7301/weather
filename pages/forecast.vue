@@ -6,20 +6,24 @@
             <PeriodChoicer />
         </div>
         <div v-else-if="weatherDatasPending">
-            <img :src="`${global.imagesLink}/sun/26_rwr8lf`" alt="waiting" format="webp" provider="cloudinary" width="300" class="mx-auto mt-10 animate-spin" />
+            <img :src="`${global.imagesLink}/sun/26_rwr8lf`" alt="waiting" format="webp" provider="cloudinary"
+                width="300" class="mx-auto mt-10 animate-spin" />
         </div>
         <ErrorsError v-else error="no-datas" />
     </div>
 </template>
 
 <script setup>
-import global from '~/site.config.json'
+    import global from '~/site.config.json'
 
-onMounted(() => {
-    if(!useWeatherDatas().value) {
-        navigateTo('/')
-    }
-})
+    onMounted(() => {
+        if (!useWeatherDatas().value) {
+            navigateTo('/')
+        } else {
+            historyStorage()
+        }
+
+    })
 
     const periodChoiced = usePeriodChoiced()
     watch(periodChoiced, (newPeriodChoiced) => {
@@ -53,4 +57,25 @@ onMounted(() => {
             }
         }
     })
+
+    const historyStorage = () => {
+        const history = localStorage.getItem('locationHistory')
+        if (history) {
+            const newLocation = useWeatherDatas().value.resolvedAddress
+            const historyArray = JSON.parse(history)
+            if (!historyArray.includes(newLocation)) {
+                if(historyArray.length >=4) {
+                    historyArray.pop()
+                }
+                const newHistoryArray = [newLocation, ...historyArray]
+                localStorage.setItem('locationHistory', JSON.stringify(newHistoryArray))
+            } else {
+                const newHistoryArray = historyArray.filter((item) => item !== newLocation)
+                localStorage.setItem('locationHistory', JSON.stringify([newLocation, ...newHistoryArray]))
+            }
+        } else {
+            const newLocation = [useWeatherDatas().value.resolvedAddress]
+            localStorage.setItem('locationHistory', JSON.stringify(newLocation));
+        }
+    }
 </script>
