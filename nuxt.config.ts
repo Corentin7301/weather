@@ -91,7 +91,7 @@ export default defineNuxtConfig({
           rel: 'icon',
           type: 'image/x-icon',
           // CHANGE FAVICON NAME HERE
-          href: '/icon.png'
+          href: '/favicon.png'
         },
         {
           hid: "canonical",
@@ -131,7 +131,7 @@ export default defineNuxtConfig({
       lang: 'fr',
       theme_color: "#272727",
       background_color: "#272727",
-      // start_url: "/?utm_source=pwa"
+      start_url: "/?utm_source=pwa"
     },
     // workbox: {
     //   enabled: true

@@ -17,10 +17,11 @@
 - [x] send new research when user click on history card
 - [x] add X button to delete searchbar
 - [x] location button
+- [x] change name of app
+- [x] add best quality icon for pwa
 - [ ] add install pwa button
 - [ ] footer + credits + inspiration + github link + contact + mention legales
 - [ ] add transitions between pages
-- [ ] change name of app
 - [ ] 3rd day
 - [ ] 15 days
 - [ ] responsive
