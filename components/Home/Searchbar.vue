@@ -2,7 +2,7 @@
     <div class="flex items-center gap-5">
         <div class="relative">
             <input @keyup.enter="fetchWeatherDatas()" type="text" autocomplete="false" placeholder="Chambéry, Savoie"
-                :class="[`w-full px-5 py-2 pr-12 text-lg font-light bg-transparent rounded-full bg-grad-card-perso ${!useDeferredPrompt().value ? 'select-none':''}`]"
+                :class="[`w-full px-5 py-2 pr-12 text-lg font-light bg-transparent rounded-full bg-grad-card-perso ${!useDeferredPrompt().value ? 'outline-none' : ''}`]"
                 v-model="searchedLocation" aria-describedby="searchbar">
             <div v-if="searchedLocation" @click="searchedLocation = ''"
                 class="absolute inset-y-0 right-0 flex items-center pr-3 ">
