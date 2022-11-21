@@ -1,7 +1,7 @@
 <template>
     <div class="min-w-fit">
         <Tag :type="Tag === 'button' && submitButton ? `submit` : ``"
-        :class="`px-3  flex items-center justify-center transition-colors rounded-md md:py-4 md:px-10 md:text-lg
+        :class="`px-3  flex items-center justify-center transition-colors rounded-md md:py-1 md:px-10 md:text-lg
         ${!useDeferredPrompt().value ? 'no-tap-highlighting' : ''}
         ${outlined ? `text-fuel-yellow-500 bg-white border-2 border-fuel-yellow-500 hover:bg-fuel-yellow-500 hover:text-white` : 'border-2 border-transparent'} 
         ${inversed ? `bg-white text-fuel-yellow-500 hover:bg-fuel-yellow-500 hover:text-white` : ''} 
@@ -9,7 +9,7 @@
         ${disabled ? `bg-fuel-yellow-500 text-white opacity-50 hover:opacity-50 cursor-not-allowed` : ''} 
         ${roundedNone ? `rounded-none` : ``}
         ${roundedFull ? 'rounded-full' : ``}
-        ${!outlined && !inversed && !unelevated && !disabled ? `bg-fuel-yellow-500 text-white font-medium lg:hover:bg-fuel-yellow-50 lg:hover:text-fuel-yellow-500 lg:hover:border-2 lg:hover:border-fuel-yellow-500` : ''} 
+        ${!outlined && !inversed && !unelevated && !disabled ? `bg-fuel-yellow-500 text-white font-medium lg:hover:bg-fuel-yellow-50 lg:hover:text-fuel-yellow-500` : ''} 
         `"
         :href="href" 
         :target="`${newTab ? '_blank' : ''}`">
