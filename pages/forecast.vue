@@ -16,10 +16,9 @@
 
 <script setup>
     import global from '~/site.config.json'
-
     definePageMeta({
-  layout: "scrollable",
-});
+        layout: "scrollable",
+    });
 
     onMounted(() => {
         if (!useWeatherDatas().value) {
@@ -69,7 +68,7 @@
             const newLocation = useWeatherDatas().value.resolvedAddress
             const historyArray = JSON.parse(history)
             if (!historyArray.includes(newLocation)) {
-                if(historyArray.length >=4) {
+                if (historyArray.length >= 4) {
                     historyArray.pop()
                 }
                 const newHistoryArray = [newLocation, ...historyArray]

@@ -9,15 +9,18 @@
                 <Icon v-if="searchedLocation" name="material-symbols:close-rounded" size="20px" class="text-gray-500" />
             </div>
         </div>
-        <button @click="fetchWeatherDatas()" :class="[`p-3 ml-2 rounded-full bg-fuel-yellow-500 ${!useDeferredPrompt().value ? 'no-tap-highlighting' : ''}`]"
-        aria-describedby="search button">
-        <span @click="!searchedLocation ? gpsQueryLocation = true : gpsQueryLocation = false"
+        <button @click="fetchWeatherDatas()"
+            :class="[`p-3 ml-2 rounded-full ${errorIcon ? 'bg-red-400' : 'bg-fuel-yellow-500'}  ${!useDeferredPrompt().value ? 'no-tap-highlighting' : ''}`]"
+            aria-describedby="search button">
+            <span @click="!searchedLocation ? gpsQueryLocation = true : gpsQueryLocation = false"
                 class="w-full h-full ">
                 <Icon v-if="searchedLocation" name="material-symbols:arrow-right-alt-rounded" size="32px"
-                class="text-white" />
+                    class="text-white" />
                 <span v-else>
-                    <Icon v-if="!gpsWaitingIcon" name="material-symbols:my-location-rounded" size="32px" class="p-[2px] text-white" />
-                    <Icon v-else name="prime:spinner" size="32px" class="text-white animate-spin" />
+                    <Icon v-if="gpsWaitingIcon" name="prime:spinner" size="32px" class="text-white animate-spin" />
+                    <Icon v-else-if="errorIcon" name="system-uicons:cross" size="32px"
+                        class="text-white" />
+                    <Icon v-else name="material-symbols:my-location-rounded" size="32px" class="p-[2px] text-white" />
                 </span>
             </span>
         </button>
@@ -29,6 +32,7 @@
     const searchedLocation = ref('')
     const gpsQueryLocation = ref(false)
     const gpsWaitingIcon = ref(false)
+    const errorIcon = ref(false)
     const envVars = useRuntimeConfig().public
     const dataAreFetched = ref(false)
     const weatherDatasPending = ref(false)
@@ -42,7 +46,7 @@
             clearNuxtData('weatherDatas')
             const dateNow = useDateNow()
             const weatherApiCallUrl = (location) =>
-            `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?iconSet=icons2&key=${envVars.weatherVisualCrossingApiKey}&unitGroup=metric&lang=fr`
+                `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?iconSet=icons2&key=${envVars.weatherVisualCrossingApiKey}&unitGroup=metric&lang=fr`
             const weatherApiCall = async (location) => {
                 if (envVars.environment === 'production') {
                     const {
@@ -64,13 +68,26 @@
                         const res = await $fetch(weatherApiCallUrl(location));
                         return res
                     })
-                    weatherDatasPending.value = true
-                    setWeatherDatas(data.value)
-                    weatherDatasPending.value = false
-                    dataAreFetched.value = true
-                    setPeriodChoice(usePeriodChoiced().value)
-                    console.warn('PREPROD mode')
-                    return navigateTo('/forecast')
+                    if (data.value) {
+                        weatherDatasPending.value = true
+                        setWeatherDatas(data.value)
+                        weatherDatasPending.value = false
+                        dataAreFetched.value = true
+                        setPeriodChoice(usePeriodChoiced().value)
+                        console.warn('PREPROD mode')
+                        return navigateTo('/forecast')
+                    } else {
+                        gpsWaitingIcon.value = true
+                        setTimeout(() => {
+                            gpsWaitingIcon.value = false
+                            errorIcon.value = true
+                        }, 1000)
+                        setTimeout(() => {
+                            errorIcon.value = false
+                            console.log('bad location, test with other location');
+                        }, 2000)
+                        searchedLocation.value = ''
+                    }
                 } else {
                     weatherDatasPending.value = true
                     setWeatherDatas(testDatas)
@@ -86,7 +103,9 @@
                     data
                 } = await useAsyncData('reverseGeocodeDatas', async () => {
                     // const res = await $fetch(`https://api-adresse.data.gouv.fr/reverse/?lon=${lon}&lat=${lat}`);
-                    const res = await $fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=fr`);
+                    const res = await $fetch(
+                        `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=fr`
+                    );
                     return res
                 })
                 const city = data.value.locality
@@ -100,7 +119,8 @@
                 // Is geolocation available ?
                 if ('geolocation' in navigator) {
                     navigator.geolocation.getCurrentPosition(async (position) => {
-                        const reverseGeocode = reverseGeocodeApiCall(position.coords.latitude, position.coords.longitude)
+                        const reverseGeocode = reverseGeocodeApiCall(position.coords.latitude,
+                            position.coords.longitude)
                         weatherApiCall(await reverseGeocode)
                         gpsWaitingIcon.value = false
                     });

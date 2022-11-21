@@ -22,8 +22,8 @@
 - [x] add install pwa button
 - [x] add transitions between pages
 - [x] footer + credits + inspiration + github link + contact + mention legales
+- [x] add analytics
 - [ ] responsive
-- [ ] add analytics
 - [ ] 3rd day
 - [ ] 15 days
 - [ ] share weather functionality 

@@ -1,6 +1,6 @@
 <template>
     <section>
-        <div @click="periodButtonIsClicked = !periodButtonIsClicked" class="relative flex gap-16 my-6 overflow-x-scroll scrollable period-choicer snap-x">
+        <div @click="periodButtonIsClicked = !periodButtonIsClicked" class="relative flex gap-[15%] my-6 overflow-x-scroll scrollable period-choicer snap-x">
             <Button :unelevated="usePeriodChoiced().value.value !== period.value"
                 v-for="(period,index) in usePeriodItems().value" :key="index" roundedFull
                 @click="setPeriodChoice(period)" :class="[`snap-start snap-mandatory ${!useDeferredPrompt().value ? 'no-tap-highlighting' : ''}`]">
