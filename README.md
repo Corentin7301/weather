@@ -24,6 +24,7 @@
 - [x] footer + credits + inspiration + github link + contact + mention legales
 - [x] add analytics
 - [ ] responsive
+- [ ] check lighthouse
 - [ ] 3rd day
 - [ ] 15 days
 - [ ] share weather functionality 

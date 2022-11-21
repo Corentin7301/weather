@@ -18,8 +18,7 @@
                     class="text-white" />
                 <span v-else>
                     <Icon v-if="gpsWaitingIcon" name="prime:spinner" size="32px" class="text-white animate-spin" />
-                    <Icon v-else-if="errorIcon" name="system-uicons:cross" size="32px"
-                        class="text-white" />
+                    <Icon v-else-if="errorIcon" name="system-uicons:cross" size="32px" class="text-white" />
                     <Icon v-else name="material-symbols:my-location-rounded" size="32px" class="p-[2px] text-white" />
                 </span>
             </span>
@@ -55,12 +54,26 @@
                         const res = await $fetch(weatherApiCallUrl(location));
                         return res
                     })
-                    weatherDatasPending.value = true
-                    setWeatherDatas(data.value)
-                    weatherDatasPending.value = false
-                    dataAreFetched.value = true
-                    setPeriodChoice(usePeriodChoiced().value)
-                    return navigateTo('/forecast')
+                    if (data.value) {
+                        weatherDatasPending.value = true
+                        setWeatherDatas(data.value)
+                        weatherDatasPending.value = false
+                        dataAreFetched.value = true
+                        setPeriodChoice(usePeriodChoiced().value)
+                        console.warn('PREPROD mode')
+                        return navigateTo('/forecast')
+                    } else {
+                        gpsWaitingIcon.value = true
+                        setTimeout(() => {
+                            gpsWaitingIcon.value = false
+                            errorIcon.value = true
+                        }, 1000)
+                        setTimeout(() => {
+                            errorIcon.value = false
+                            console.log('bad location, test with other location');
+                        }, 2000)
+                        searchedLocation.value = ''
+                    }
                 } else if (envVars.environment === 'preproduction') {
                     const {
                         data
