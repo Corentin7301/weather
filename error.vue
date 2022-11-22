@@ -4,7 +4,7 @@
         <h1 class="mb-5 font-black text-7xl">Oups <span class="text-fuel-yellow-500">!</span></h1>
         <h2 class="mb-10 text-center">Je ne vais pas pouvoir te donner la météo sur cette page...</h2>
         <NuxtLink to="/">
-            <Button customIcon roundedFull>
+            <Button customIcon roundedFull btnName="return to home" aria-describedby="return to home">
                 <template #content>
                         Retourner à l'accueil
                 </template>

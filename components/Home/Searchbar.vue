@@ -11,7 +11,7 @@
         </div>
         <button @click="fetchWeatherDatas()"
             :class="[`p-3 ml-2 rounded-full ${errorIcon ? 'bg-red-400' : 'bg-fuel-yellow-500'}  ${!useDeferredPrompt().value ? 'no-tap-highlighting' : ''}`]"
-            aria-describedby="search button">
+            aria-describedby="search button" name="search button">
             <span @click="!searchedLocation ? gpsQueryLocation = true : gpsQueryLocation = false"
                 class="w-full h-full ">
                 <Icon v-if="searchedLocation" name="material-symbols:arrow-right-alt-rounded" size="32px"
