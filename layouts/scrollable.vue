@@ -1,6 +1,6 @@
 <template>
     <div class="min-h-screen text-gray-50 bg-grad-perso font-Karla">
-        <div class="max-w-[90%] mx-auto py-4">
+        <div class="max-w-[90%] lg:max-w-6xl mx-auto py-4">
             <slot />
         </div>
     </div>
