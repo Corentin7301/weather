@@ -6,7 +6,7 @@
             <PeriodChoicer />
         </div>
         <div v-else-if="weatherDatasPending">
-            <img :src="`${global.imagesLink}/sun/26_rwr8lf`" alt="waiting" class="w-[300px] max-w-[300px] mx-auto mt-10 animate-spin" />
+            <img :src="`${global.imagesLink}/sun/26_rwr8lf`" alt="waiting" width="100" height="100" class="w-[300px] mx-auto mt-10 animate-spin" />
         </div>
         <ErrorsError v-else error="no-datas" />
         <NuxtLink to="/informations" class="block mt-10 text-sm text-center text-gray-400">Informations</NuxtLink>
