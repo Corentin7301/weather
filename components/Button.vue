@@ -12,7 +12,9 @@
         ${!outlined && !inversed && !unelevated && !disabled ? `bg-fuel-yellow-500 text-white font-medium lg:hover:bg-fuel-yellow-50 lg:hover:text-fuel-yellow-500` : ''} 
         `"
         :href="href" 
-        :target="`${newTab ? '_blank' : ''}`">
+        :target="`${newTab ? '_blank' : ''}`"
+        :name="btnName"
+        >
             <slot name="content" />
             <span v-if="customIcon" class="flex items-center ml-1 "><slot name="icon"></slot></span>
         </Tag>
@@ -64,7 +66,11 @@
         submitButton: {
             type: Boolean,
             required: false
-        }
+        },
+        btnName: {
+            type: String,
+            required: false
+        },
     })
     const Tag = props.href ? 'a' : 'button'
 </script>

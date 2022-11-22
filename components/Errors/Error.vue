@@ -2,8 +2,8 @@
     <div class="flex items-center justify-between opacity-80">
         <p>{{errors[error].label}}<span
                 class="block mt-3 text-lg font-medium text-fuel-yellow-500">{{errors[error].subLabel}}</span></p>
-        <img :src="`${global.imagesLink}/${errors[error].icon}`" format="webp" provider="cloudinary" width="300" alt="error" loading="lazy"
-            class="fly-animation max-w-[35vw]" />
+        <img :src="`${global.imagesLink}/${errors[error].icon}`" alt="error" loading="lazy"
+            class="fly-animation max-w-[35vw] w-[35vw]" />
     </div>
 </template>
 
