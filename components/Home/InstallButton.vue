@@ -1,5 +1,5 @@
 <template>
-    <button :class="[`absolute -top-4 -right-3 animate-bounce ${!useDeferredPrompt().value ? 'no-tap-highlighting' : ''}`]" aria-describedby="application install button" name="application install button" v-if="deferredPrompt" @click="clickCallback()">
+    <button :class="[`absolute -top-4 -right-3 animate-bounce ${!useDeferredPrompt().value ? 'no-tap-highlighting' : ''}`]" aria-label="application install button" name="application install button" v-if="deferredPrompt" @click="clickCallback()">
         <div class="p-3 ml-2 rounded-full bg-fuel-yellow-500">
             <Icon name="ic:baseline-install-mobile" size="24px" class="text-white" />
         </div>
