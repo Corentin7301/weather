@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@kevinmarrec/nuxt-pwa": "^0.10.0",
+    "@nuxtjs/robots": "^3.0.0",
     "@vueuse/core": "^9.5.0",
     "dayjs": "^1.11.6"
   }
