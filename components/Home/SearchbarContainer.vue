@@ -1,5 +1,5 @@
 <template>
-    <div class="absolute w-[90%] mt-10 -translate-x-1/2 left-1/2 bottom-12 space-y-5">
+    <div :class="[`absolute w-[90%] lg:max-w-xl mt-10 -translate-x-1/2 left-1/2 ${getHistory ? 'lg:-translate-x-full ' : ''} bottom-12 space-y-5 lg:space-y-0 lg:space-x-5`]">
             <section
                 class="py-8 shadow-2xl px-7 rounded-2xl bg-grad-card-perso backdrop-blur">
                 <h1 class="mb-3 text-4xl font-semibold">{{global.siteName}}</h1>
