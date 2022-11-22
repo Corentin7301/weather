@@ -1,8 +1,8 @@
 <template>
     <section class="relative px-5 py-3 shadow-2xl rounded-2xl bg-grad-card-perso">
         <div v-if="useDisplayType().value === 'hourly'">
-            <img :src="`${global.imagesLink}/${iconChoice.icon}`" :alt="props.biggerCardDayDatas.icon"
-                class="absolute -right-4 bottom-1 fly-animation max-w-[140px] w-[140px]" />
+            <img :src="`${global.imagesLink}/${iconChoice.icon}`" :alt="props.biggerCardDayDatas.icon" width="100" height="100"
+                class="absolute -right-4 bottom-1 fly-animation w-[140px]" />
             <div class="flex items-start justify-between ">
                 <p class="text-2xl font-medium">{{usePeriodChoiced().value.label}}</p>
                 <p class="z-10 text-sm font-extralight first-letter:capitalize">
