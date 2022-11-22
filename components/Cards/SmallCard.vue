@@ -4,7 +4,7 @@
         <div v-if="useDisplayType().value === 'hourly'">
             <div class="flex items-end justify-between">
                 <img :src="`${global.imagesLink}/${iconChoice.icon}`" :alt="props.hourData.icon"
-                format="webp" provider="cloudinary" width="300" loading="lazy" class="max-w-[100px]" />
+                format="webp" provider="cloudinary" width="300" loading="lazy" class="max-w-[100px] w-[100px]" />
                 <p class="mb-2 text-2xl">{{hourData.datetime}}h</p>
             </div>
             <div class="flex justify-between mt-3">
@@ -42,7 +42,7 @@
             </p>
 
             <img :src="`${global.imagesLink}/${iconChoice.icon}`" :alt="props.hourData.icon"
-            format="webp" provider="cloudinary" height="300" loading="lazy" class="max-h-[100px] mx-auto" />
+            format="webp" provider="cloudinary" height="300" loading="lazy" class="max-h-[100px] w-[100px] mx-auto" />
             <div :class="[`flex  w-full ${precipitation? 'flex-col justify-between' : 'flex-row justify-around'}`]">
                 <p class="flex justify-center my-3 text-5xl font-bold">{{Math.round(hourData.temp)}}<span
                         class="text-lg font-medium text-fuel-yellow-500">°C</span></p>
