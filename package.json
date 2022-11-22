@@ -15,6 +15,7 @@
     "nuxt-umami": "^1.1.1"
   },
   "dependencies": {
+    "@funken-studio/sitemap-nuxt-3": "^4.0.4",
     "@kevinmarrec/nuxt-pwa": "^0.10.0",
     "@vueuse/core": "^9.5.0",
     "dayjs": "^1.11.6"
