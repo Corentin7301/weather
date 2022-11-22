@@ -60,7 +60,6 @@
                         weatherDatasPending.value = false
                         dataAreFetched.value = true
                         setPeriodChoice(usePeriodChoiced().value)
-                        console.warn('PREPROD mode')
                         return navigateTo('/forecast')
                     } else {
                         gpsWaitingIcon.value = true

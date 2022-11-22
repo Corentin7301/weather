@@ -1,9 +1,10 @@
 <template>
     <div class="relative max-h-screen min-h-screen overflow-hidden text-gray-50 bg-grad-perso font-Karla">
-        <div :class="[`max-w-[90%] lg:max-w-6xl mx-auto py-4 ${!useDeferredPrompt().value ? 'select-none':''}`]">
+        <div :class="[`max-w-[90%] md:max-w-2xl lg:max-w-6xl mx-auto py-4 ${!useDeferredPrompt().value ? 'select-none':''}`]">
             <slot v-if="online" />
             <ErrorsError v-else error="no-connexion" />
         </div>
+        
     </div>
 </template>
 
