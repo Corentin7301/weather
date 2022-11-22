@@ -13,7 +13,7 @@
         `"
         :href="href" 
         :target="`${newTab ? '_blank' : ''}`"
-        :name="btnName"
+        :title="btnTitle"
         >
             <slot name="content" />
             <span v-if="customIcon" class="flex items-center ml-1 "><slot name="icon"></slot></span>
@@ -67,7 +67,7 @@
             type: Boolean,
             required: false
         },
-        btnName: {
+        btnTitle: {
             type: String,
             required: false
         },
