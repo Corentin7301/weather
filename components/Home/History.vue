@@ -1,5 +1,5 @@
 <template>
-        <div class="absolute w-full">
+        <div class="absolute w-full lg:left-full lg:top-0">
             <section
                 class="w-full py-8 shadow-2xl px-7 rounded-2xl bg-grad-card-perso backdrop-blur">
                 <p class="relative inline-block mb-6 text-3xl">
@@ -13,7 +13,7 @@
                     </button>
                 </div>
             </section>
-            <div class="h-3 spacer"></div>
+            <div class="h-3 spacer lg:hidden"></div>
         </div>
 </template>
 
