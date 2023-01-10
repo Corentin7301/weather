@@ -102,6 +102,7 @@ export const useIndexDayChoiced = () => useState < Number > ('indexDayChoiced', 
 
 // calcul of moon percent from moon phase
 export const calcMoonPercent = (moonphase: Number) => {
+    const limitToOneDecimal = (num) =>  Number(num.toFixed(1));
     let result = null
     if (moonphase === 0 || moonphase === 1) {
         result = 0;
@@ -111,11 +112,10 @@ export const calcMoonPercent = (moonphase: Number) => {
         return result;
     } else if (moonphase < 0.5) {
         result = moonphase * 100 * 2;
-        console.log(0.49 * 100 * 2)
-        return result;
+        return limitToOneDecimal(result);
     } else if (moonphase > 0.5) {
         result = moonphase * 100 * 2;
-        return 200 - result;
+        return 200 - limitToOneDecimal(result);
     }
 }
 
