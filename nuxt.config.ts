@@ -145,4 +145,7 @@ export default defineNuxtConfig({
     websiteId: '1b9dd955-daba-47aa-a8e9-ad83083e31c1',
     scriptUrl: 'https://analytics.corentinperroux.fr/umami.js'
   },
+  plausible: {
+    apiHost: 'https://analy.corentinperroux.fr',
+  },
 })
