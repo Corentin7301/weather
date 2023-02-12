@@ -102,7 +102,7 @@ export default defineNuxtConfig({
     },
     pageTransition: { name: 'page', mode: 'out-in' },
   },
-  modules: ['@nuxtjs/tailwindcss', 'nuxt-icon','@kevinmarrec/nuxt-pwa','@nuxt/content','nuxt-umami',['@funken-studio/sitemap-nuxt-3', { generateOnBuild: true }],'@nuxtjs/robots'],
+  modules: ['@nuxtjs/tailwindcss', 'nuxt-icon','@kevinmarrec/nuxt-pwa','@nuxt/content','nuxt-umami','@nuxtjs/plausible',['@funken-studio/sitemap-nuxt-3', { generateOnBuild: true }],'@nuxtjs/robots'],
   css: ['@/assets/css/tailwind.css', '@/assets/css/fonts.css', '@/assets/css/animations.css',
     '@/assets/css/gradients.css', '@/assets/css/utils.css'
   ],
@@ -112,6 +112,7 @@ export default defineNuxtConfig({
       environment: process.env.APP_ENV  || 'development',
     }
   },
+  
   pwa: {
     meta: {
       name: global.siteName,
@@ -143,5 +144,8 @@ export default defineNuxtConfig({
     doNotTrack: false,
     websiteId: '1b9dd955-daba-47aa-a8e9-ad83083e31c1',
     scriptUrl: 'https://analytics.corentinperroux.fr/umami.js'
+  },
+  plausible: {
+    domain: 'meteosoleil.com'
   },
 })
