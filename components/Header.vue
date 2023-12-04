@@ -23,8 +23,8 @@ const {fullPath} = useRoute()
     const shareIsAvailable = ref(navigator.share)
     const share = () => {
         const shareParams = {
-            title: 'Weather forecast',
-            text: 'Weather forecast',
+            title: 'Météo Soleil',
+            text: 'Regardes la météo en direct ! - ',
             url: `https://www.meteosoleil.com/${fullPath}`,
         }
         navigator.share(shareParams)
