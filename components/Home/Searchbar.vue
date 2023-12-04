@@ -27,12 +27,12 @@
 </template>
 
 <script setup>
-    import testDatas from '~/datas/test-datas.json'
+import testDatas from '~/datas/test-datas.json'
     const searchedLocation = ref('')
     const gpsQueryLocation = ref(false)
     const gpsWaitingIcon = ref(false)
     const errorIcon = ref(false)
-    const envVars = useRuntimeConfig().public
+    const {environment, weatherVisualCrossingApiKey} = useRuntimeConfig().public
     const dataAreFetched = ref(false)
     const weatherDatasPending = ref(false)
 
@@ -45,9 +45,9 @@
             clearNuxtData('weatherDatas')
             const dateNow = useDateNow()
             const weatherApiCallUrl = (location) =>
-                `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?iconSet=icons2&key=${envVars.weatherVisualCrossingApiKey}&unitGroup=metric&lang=fr`
+                `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?iconSet=icons2&key=${weatherVisualCrossingApiKey}&unitGroup=metric&lang=fr`
             const weatherApiCall = async (location) => {
-                if (envVars.environment === 'production') {
+                if (environment === 'production') {
                     const {
                         data
                     } = await useAsyncData('weatherDatas', async () => {
@@ -60,7 +60,7 @@
                         weatherDatasPending.value = false
                         dataAreFetched.value = true
                         setPeriodChoice(usePeriodChoiced().value)
-                        return navigateTo('/forecast')
+                        return navigateTo(`/forecast?l=${location}`)
                     } else {
                         gpsWaitingIcon.value = true
                         setTimeout(() => {
@@ -73,7 +73,7 @@
                         }, 2000)
                         searchedLocation.value = ''
                     }
-                } else if (envVars.environment === 'preproduction') {
+                } else if (environment === 'preproduction') {
                     const {
                         data
                     } = await useAsyncData('weatherDatas', async () => {
@@ -87,7 +87,7 @@
                         dataAreFetched.value = true
                         setPeriodChoice(usePeriodChoiced().value)
                         console.warn('PREPROD mode')
-                        return navigateTo('/forecast')
+                        return navigateTo(`/forecast?l=${location}`)
                     } else {
                         gpsWaitingIcon.value = true
                         setTimeout(() => {
@@ -107,7 +107,7 @@
                     dataAreFetched.value = true
                     setPeriodChoice(usePeriodChoiced().value)
                     console.warn('DEV mode')
-                    return navigateTo('/forecast')
+                    return navigateTo(`/forecast?l=${location}`)
                 }
             }
             const reverseGeocodeApiCall = async (lat, lon) => {
