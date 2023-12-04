@@ -15,17 +15,38 @@
 
 <script setup>
     import global from '~/site.config.json'
+    const {weatherVisualCrossingApiKey} = useRuntimeConfig().public
+
     definePageMeta({
         layout: "scrollable",
     });
-
-    onMounted(() => {
+    
+    const {query} = useRoute()
+    
+    const hasDatas = async () => {
         if (!useWeatherDatas().value) {
-            navigateTo('/')
+        if(query.l.length > 0) {
+            const {
+                    data
+                } = await useAsyncData('weatherDatas', async () => {
+                    const res = await $fetch(weatherApiCallUrl(query.l, weatherVisualCrossingApiKey));
+                    return res
+                })
+                if(data.value) {
+                    setWeatherDatas(data.value)
+                    setPeriodChoice(usePeriodChoiced().value)
+                    return
+                } else {
+                    return navigateTo('/')
+                }
         } else {
-            historyStorage()
+            return navigateTo('/')
         }
-
+    } else {
+        historyStorage()
+    }}
+    onMounted(() => {
+        hasDatas()
     })
 
     const periodChoiced = usePeriodChoiced()

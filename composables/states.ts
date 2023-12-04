@@ -3,12 +3,15 @@ import 'dayjs/locale/fr'
 // date of the choiced day
 export let useDateNow = () => useState < Object > ('dateNow', () => (dayjs().locale('fr')))
 
+export const weatherApiCallUrl = (location:string,apiKey:string) =>
+    `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?iconSet=icons2&key=${apiKey}&unitGroup=metric&lang=fr`
+
 // weather datas setter
 export const setWeatherDatas = (weatherFetchedDatas: Object) => (
     useWeatherDatas().value = weatherFetchedDatas
 );
 // weather datas getter
-export const useWeatherDatas = () => useState < Object > ('weatherFetchedDatas', () => (null));
+export const useWeatherDatas = () => useState < Object | null > ('weatherFetchedDatas', () => (null));
 
 // period items of the user can choose
 export const usePeriodItems = () => useState < Object > ('periodItems', () => ([{
@@ -102,7 +105,7 @@ export const useIndexDayChoiced = () => useState < Number > ('indexDayChoiced', 
 
 // calcul of moon percent from moon phase
 export const calcMoonPercent = (moonphase: Number) => {
-    const limitToOneDecimal = (num) =>  Number(num.toFixed(1));
+    const limitToOneDecimal = (num) => Number(num.toFixed(1));
     let result = null
     if (moonphase === 0 || moonphase === 1) {
         result = 0;

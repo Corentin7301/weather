@@ -27,7 +27,7 @@
 - [ ] check lighthouse
 - [ ] 3rd day
 - [ ] 15 days
-- [ ] share weather functionality 
+- [x] share weather functionality 
 
 
 

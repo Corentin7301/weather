@@ -27,31 +27,31 @@
 </template>
 
 <script setup>
-    import testDatas from '~/datas/test-datas.json'
+import testDatas from '~/datas/test-datas.json'
     const searchedLocation = ref('')
     const gpsQueryLocation = ref(false)
     const gpsWaitingIcon = ref(false)
     const errorIcon = ref(false)
-    const envVars = useRuntimeConfig().public
+    const {environment, weatherVisualCrossingApiKey} = useRuntimeConfig().public
     const dataAreFetched = ref(false)
     const weatherDatasPending = ref(false)
 
     const choicedHistoryLocation = useChoicedHistoryLocation()
     watch(choicedHistoryLocation, (newValue) => {
-        fetchWeatherDatas(newValue)
+        fetchWeatherDatas()
     })
     const fetchWeatherDatas = async () => {
         if (searchedLocation.value || choicedHistoryLocation.value || gpsQueryLocation.value) {
-            clearNuxtData('weatherDatas')
+            clearNuxtState('weatherDatas')
             const dateNow = useDateNow()
-            const weatherApiCallUrl = (location) =>
-                `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?iconSet=icons2&key=${envVars.weatherVisualCrossingApiKey}&unitGroup=metric&lang=fr`
+            // const weatherApiCallUrl = (location) =>
+            //     `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?iconSet=icons2&key=${weatherVisualCrossingApiKey}&unitGroup=metric&lang=fr`
             const weatherApiCall = async (location) => {
-                if (envVars.environment === 'production') {
+                if (environment === 'production') {
                     const {
                         data
                     } = await useAsyncData('weatherDatas', async () => {
-                        const res = await $fetch(weatherApiCallUrl(location));
+                        const res = await $fetch(weatherApiCallUrl(location, weatherVisualCrossingApiKey));
                         return res
                     })
                     if (data.value) {
@@ -60,7 +60,7 @@
                         weatherDatasPending.value = false
                         dataAreFetched.value = true
                         setPeriodChoice(usePeriodChoiced().value)
-                        return navigateTo('/forecast')
+                        return navigateTo(`/forecast?l=${slugify(location)}`)
                     } else {
                         gpsWaitingIcon.value = true
                         setTimeout(() => {
@@ -73,13 +73,14 @@
                         }, 2000)
                         searchedLocation.value = ''
                     }
-                } else if (envVars.environment === 'preproduction') {
+                } else if (environment === 'preproduction') {
                     const {
                         data
                     } = await useAsyncData('weatherDatas', async () => {
-                        const res = await $fetch(weatherApiCallUrl(location));
+                        const res = await $fetch(weatherApiCallUrl(location, weatherVisualCrossingApiKey));
                         return res
                     })
+                    
                     if (data.value) {
                         weatherDatasPending.value = true
                         setWeatherDatas(data.value)
@@ -87,7 +88,7 @@
                         dataAreFetched.value = true
                         setPeriodChoice(usePeriodChoiced().value)
                         console.warn('PREPROD mode')
-                        return navigateTo('/forecast')
+                        return navigateTo(`/forecast?l=${slugify(location)}`)
                     } else {
                         gpsWaitingIcon.value = true
                         setTimeout(() => {
@@ -107,7 +108,7 @@
                     dataAreFetched.value = true
                     setPeriodChoice(usePeriodChoiced().value)
                     console.warn('DEV mode')
-                    return navigateTo('/forecast')
+                    return navigateTo(`/forecast?l=${slugify(location)}`)
                 }
             }
             const reverseGeocodeApiCall = async (lat, lon) => {

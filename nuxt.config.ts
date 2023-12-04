@@ -2,6 +2,11 @@ import global from './site.config.json'
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
   ssr: false,
+  routeRules: {
+    '/': { prerender: true },
+    '/informations': { prerender: true },
+    '/forecast': { ssr: false },
+  },
   app: {
     head: {
       title: global.siteName,
@@ -102,7 +107,7 @@ export default defineNuxtConfig({
     },
     pageTransition: { name: 'page', mode: 'out-in' },
   },
-  modules: ['@nuxtjs/tailwindcss', 'nuxt-icon','@kevinmarrec/nuxt-pwa','@nuxt/content','@nuxtjs/plausible',['@funken-studio/sitemap-nuxt-3', { generateOnBuild: true }],'@nuxtjs/robots'],
+  modules: ['@nuxtjs/tailwindcss', 'nuxt-icon','@nuxt/content','@kevinmarrec/nuxt-pwa','@nuxtjs/plausible',['@funken-studio/sitemap-nuxt-3', { generateOnBuild: true }],'@nuxtjs/robots'],
   css: ['@/assets/css/tailwind.css', '@/assets/css/fonts.css', '@/assets/css/animations.css',
     '@/assets/css/gradients.css', '@/assets/css/utils.css'
   ],
@@ -148,4 +153,5 @@ export default defineNuxtConfig({
   plausible: {
     apiHost: 'https://analy.corentinperroux.fr',
   },
+  devtools: false,
 })

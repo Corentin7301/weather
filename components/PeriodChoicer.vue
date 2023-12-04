@@ -11,7 +11,7 @@
         </div>
         <div class="flex space-x-3 overflow-x-scroll lg:pb-3 scrollable hours snap-x scroll-smooth display-scrollable" ref="hoursContainer">
             <CardsSmallCard v-for="(hourData,index) in choicedPeriodHours" :key="index" :hourData="hourData" :index="index"
-                :sunTimes="sunTimes" class="snap-start snap-mandatory" />
+            :sunTimes="sunTimes" class="snap-start snap-mandatory" />
         </div>
     </section>
 </template>
