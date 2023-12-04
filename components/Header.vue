@@ -24,7 +24,7 @@ const {fullPath} = useRoute()
     const share = () => {
         const shareParams = {
             title: 'Météo Soleil',
-            text: 'Regardes la météo en direct ! - ',
+            text: `Regardes la météo ${useWeatherDatas() ? 'à '+useWeatherDatas().value.resolvedAddress.split(',')[0].trim()+' ' : ''}en direct ! - `,
             url: `https://www.meteosoleil.com/${fullPath}`,
         }
         navigator.share(shareParams)
