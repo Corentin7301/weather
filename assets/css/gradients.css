@@ -3,3 +3,9 @@
     background: linear-gradient(320deg, #202020 0%, #202020 30%, #6b6b6b9b 100%);
     border: 1px solid rgba(255, 255, 255, 0.25);
 }
+
+.bg-share-button-perso {
+    background: -webkit-linear-gradient(304deg, #b98322 0%, #f6ae2d 100%);
+    background: linear-gradient(320deg, #b98322 0%, #b98322 30%, #f6ae2d 100%);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+}

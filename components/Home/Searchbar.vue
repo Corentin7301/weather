@@ -38,20 +38,20 @@ import testDatas from '~/datas/test-datas.json'
 
     const choicedHistoryLocation = useChoicedHistoryLocation()
     watch(choicedHistoryLocation, (newValue) => {
-        fetchWeatherDatas(newValue)
+        fetchWeatherDatas()
     })
     const fetchWeatherDatas = async () => {
         if (searchedLocation.value || choicedHistoryLocation.value || gpsQueryLocation.value) {
-            clearNuxtData('weatherDatas')
+            clearNuxtState('weatherDatas')
             const dateNow = useDateNow()
-            const weatherApiCallUrl = (location) =>
-                `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?iconSet=icons2&key=${weatherVisualCrossingApiKey}&unitGroup=metric&lang=fr`
+            // const weatherApiCallUrl = (location) =>
+            //     `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?iconSet=icons2&key=${weatherVisualCrossingApiKey}&unitGroup=metric&lang=fr`
             const weatherApiCall = async (location) => {
                 if (environment === 'production') {
                     const {
                         data
                     } = await useAsyncData('weatherDatas', async () => {
-                        const res = await $fetch(weatherApiCallUrl(location));
+                        const res = await $fetch(weatherApiCallUrl(location, weatherVisualCrossingApiKey));
                         return res
                     })
                     if (data.value) {
@@ -60,7 +60,7 @@ import testDatas from '~/datas/test-datas.json'
                         weatherDatasPending.value = false
                         dataAreFetched.value = true
                         setPeriodChoice(usePeriodChoiced().value)
-                        return navigateTo(`/forecast?l=${location}`)
+                        return navigateTo(`/forecast?l=${slugify(location)}`)
                     } else {
                         gpsWaitingIcon.value = true
                         setTimeout(() => {
@@ -77,9 +77,10 @@ import testDatas from '~/datas/test-datas.json'
                     const {
                         data
                     } = await useAsyncData('weatherDatas', async () => {
-                        const res = await $fetch(weatherApiCallUrl(location));
+                        const res = await $fetch(weatherApiCallUrl(location, weatherVisualCrossingApiKey));
                         return res
                     })
+                    
                     if (data.value) {
                         weatherDatasPending.value = true
                         setWeatherDatas(data.value)
@@ -87,7 +88,7 @@ import testDatas from '~/datas/test-datas.json'
                         dataAreFetched.value = true
                         setPeriodChoice(usePeriodChoiced().value)
                         console.warn('PREPROD mode')
-                        return navigateTo(`/forecast?l=${location}`)
+                        return navigateTo(`/forecast?l=${slugify(location)}`)
                     } else {
                         gpsWaitingIcon.value = true
                         setTimeout(() => {
@@ -107,7 +108,7 @@ import testDatas from '~/datas/test-datas.json'
                     dataAreFetched.value = true
                     setPeriodChoice(usePeriodChoiced().value)
                     console.warn('DEV mode')
-                    return navigateTo(`/forecast?l=${location}`)
+                    return navigateTo(`/forecast?l=${slugify(location)}`)
                 }
             }
             const reverseGeocodeApiCall = async (lat, lon) => {

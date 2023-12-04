@@ -20,8 +20,7 @@
     "@nuxt/devtools": "^1.0.4",
     "@nuxtjs/robots": "3.0.0",
     "@vueuse/core": "10.6.1",
-    "dayjs": "1.11.10",
-    "vue-demi": "^0.14.6"
+    "dayjs": "1.11.10"
   },
   "volta": {
     "node": "20.8.1"

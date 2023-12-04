@@ -2,6 +2,11 @@ import global from './site.config.json'
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
   ssr: false,
+  routeRules: {
+    '/': { prerender: true },
+    '/informations': { prerender: true },
+    '/forecast': { ssr: false },
+  },
   app: {
     head: {
       title: global.siteName,
@@ -148,4 +153,5 @@ export default defineNuxtConfig({
   plausible: {
     apiHost: 'https://analy.corentinperroux.fr',
   },
+  devtools: false,
 })
