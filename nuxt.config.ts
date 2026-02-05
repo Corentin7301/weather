@@ -1,6 +1,7 @@
 import global from './site.config.json'
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
+  compatibilityDate: '2026-02-05',
   ssr: false,
   routeRules: {
     '/': { prerender: true },
@@ -107,7 +108,7 @@ export default defineNuxtConfig({
     },
     pageTransition: { name: 'page', mode: 'out-in' },
   },
-  modules: ['@nuxtjs/tailwindcss', 'nuxt-icon','@nuxt/content','@kevinmarrec/nuxt-pwa','@nuxtjs/plausible',['@funken-studio/sitemap-nuxt-3', { generateOnBuild: true }],'@nuxtjs/robots'],
+  modules: ['@nuxtjs/tailwindcss', '@nuxt/icon','@nuxt/content','@vite-pwa/nuxt','@nuxtjs/plausible','@nuxtjs/sitemap','@nuxtjs/robots'],
   css: ['@/assets/css/tailwind.css', '@/assets/css/fonts.css', '@/assets/css/animations.css',
     '@/assets/css/gradients.css', '@/assets/css/utils.css'
   ],

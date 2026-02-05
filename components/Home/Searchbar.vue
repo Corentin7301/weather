@@ -10,7 +10,7 @@
             </div>
         </div>
         <button @click="fetchWeatherDatas()"
-            :class="[`p-3 ml-2 rounded-full ${errorIcon ? 'bg-red-400' : 'bg-fuel-yellow-500'}  ${!useDeferredPrompt().value ? 'no-tap-highlighting' : ''}`]"
+            :class="[`size-14 p-3 ml-2 rounded-full ${errorIcon ? 'bg-red-400' : 'bg-fuel-yellow-500'}  ${!useDeferredPrompt().value ? 'no-tap-highlighting' : ''}`]"
             aria-label="search button" title="search button">
             <span @click="!searchedLocation ? gpsQueryLocation = true : gpsQueryLocation = false"
                 class="w-full h-full ">
